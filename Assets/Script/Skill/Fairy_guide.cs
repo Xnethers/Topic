@@ -52,12 +52,27 @@ public class Fairy_guide : SkillBasicData
                 DrawTool.EndDraw(Rectangle_p, true);
                 isAnimation = false;
             }
-        }
-
-        //獲取範圍內敵人
+        }  
+    }
+    
+    //獲取範圍內敵人
+    void OnTriggerEnter(Collider other)
+    {
+        int j;
+        if (other.tag == "Enemy")
         {
-            Quaternion rotation = Quaternion.LookRotation(transform.forward);
-            Physics.OverlapBoxNonAlloc(new Vector3(transform.position.x, transform.position.y, transform.position.z + _distance / 2), new Vector3(transform.localScale.x * 2, transform.localScale.y * 2, _distance), targetColliders, rotation, 1 << LayerMask.NameToLayer("Enemy"));
+            for (j = 0; j < targetColliders.Length; j++)
+            {
+                if (targetColliders[j] == other)
+                { }
+                else
+                {
+                    // 調整陣列的大小
+                    System.Array.Resize(ref targetColliders, targetColliders.Length + 1);
+                    // 指定新的陣列值
+                    targetColliders[targetColliders.Length - 1] = other;
+                }
+            }
         }
     }
 
@@ -72,7 +87,7 @@ public class Fairy_guide : SkillBasicData
             {
                 targetColliders[i].GetComponentInParent<Enemy_Health>()._health -= _d;
                 targetColliders[i].GetComponentInParent<AI>().isHurt = true;//打擊感
-                show_damage(_d, targetColliders[i].transform.position);
+                //show_damage(_d, targetColliders[i].transform.position);
                 targetColliders[i] = null;
             }
         }

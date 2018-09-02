@@ -52,16 +52,11 @@ public class Skill_trigger : MonoBehaviour
                     if (detection(hitColliders[k].transform.position))
                     {
                         Player_State.islock = true;
+                        Player_target._target = hitColliders[n].transform;
                         n = k;
                         break;
                     }
             }
-        }
-
-        if (Player_State.islock == true && n < hitColliders.Length)
-        {
-            if (detection(hitColliders[n].transform.position))
-            { Player_target._target = hitColliders[n].transform; }
         }
 
         if (Player_State.islock == true)
@@ -81,7 +76,6 @@ public class Skill_trigger : MonoBehaviour
         deg = Mathf.Acos(Vector3.Dot(front_direction.normalized, target_direction.normalized)) * Mathf.Rad2Deg;
         RaycastHit hit;
         Physics.Raycast(transform.position, target_direction, out hit);
-        Debug.Log(hit.collider);
         {
             if (hit.collider.tag == "Enemy" && deg < _angle / 2)
             { return true; }

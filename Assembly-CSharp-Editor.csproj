@@ -98,6 +98,20 @@
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\LuaUtilsEditor.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\FungusLua\Scripts\Editor\MenuItems.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\Usfxr\Editor\SfxrGenerator.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AssetBuildReport.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AssetHunterHelper.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AssetHunterMainWindow.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AssetHunterSettings.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AssetHunterSettingsCreator.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AssetHunterSettingsWindow.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\AsssetHunterSceneOverview.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\ProjectFolderInfo.cs" />
+     <Compile Include="Assets\Heureka\AssetHunter\Editor\SerializableSystemType.cs" />
+     <Compile Include="Assets\Heureka\HeurekaShared\Editor\AssetReader.cs" />
+     <Compile Include="Assets\Heureka\HeurekaShared\Editor\ClassBuilder\ClassBuilder.cs" />
+     <Compile Include="Assets\Heureka\HeurekaShared\Editor\ClassBuilder\ClassBuilderType.cs" />
+     <Compile Include="Assets\Heureka\HeurekaShared\Editor\EditorUtils.cs" />
+     <Compile Include="Assets\Heureka\HeurekaShared\Editor\ScriptableObjectUtility.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
@@ -134,6 +148,7 @@
      <Compile Include="Assets\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
      <Compile Include="Assets\XWeaponTrail\Editor\XWeaponTrailEditor.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+     <None Include="Assets\Heureka\AssetHunter\Editor\Settings\ScriptableObjectsFolder.txt" />
      <None Include="Assets\Fungus\Thirdparty\FungusLua\Thirdparty\JSON\readme.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
@@ -158,6 +173,7 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
      <None Include="Assets\Fungus\Scripts\link.xml" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+     <None Include="Assets\Heureka\AssetHunter\Readme.txt" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
      <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
@@ -204,7 +220,7 @@
      <None Include="Assets\Fungus\Docs\CHANGELOG.txt" />
      <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
  <Reference Include="Facebook.Unity.Settings">
- <HintPath>C:/Users/user/Desktop/Topic/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ <HintPath>C:/Users/user/Desktop/作業/專題/Topic/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/unity5.6.2/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -276,7 +292,7 @@
  <HintPath>D:/unity5.6.2/Unity/Editor/Data/PlaybackEngines/Facebook/UnityEditor.Facebook.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Editor.ReorderableList">
- <HintPath>C:/Users/user/Desktop/Topic/Assets/Fungus/Thirdparty/Reorderable List Field/Editor/Editor.ReorderableList.dll</HintPath>
+ <HintPath>C:/Users/user/Desktop/作業/專題/Topic/Assets/Fungus/Thirdparty/Reorderable List Field/Editor/Editor.ReorderableList.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>D:/unity5.6.2/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

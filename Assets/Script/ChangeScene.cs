@@ -10,6 +10,7 @@ public class ChangeScene : MonoBehaviour
     static public string _number;
 
     public AudioSource _audiosource;
+    private AsyncOperation next_scene;
 
     bool _audio;
 
@@ -27,18 +28,21 @@ public class ChangeScene : MonoBehaviour
     void Start()
     {
         //_block = GameObject.Find("Block").GetComponent<Image>();
-
+        if (_scene != null)
+        {
+            next_scene = SceneManager.LoadSceneAsync(_scene);
+            next_scene.allowSceneActivation = false;
+        }
     }
 
     void Update()
     {
-
+        //Debug.Log(next_scene.progress);
         if (_audio)
         {
             BGM_disappear();
             if (_block.color.a >= 1 && _audiosource.volume <= 0)
             {
-                SceneManager.LoadSceneAsync(_scene);
                 change_scene = true;
                 _audio = false;
             }
@@ -47,9 +51,13 @@ public class ChangeScene : MonoBehaviour
 
     public void Start_game()
     {
+        //Scene nowscene = SceneManager.GetActiveScene();
+
         if (!_audio)
         {
             _audio = true;
+            //SceneManager.UnloadSceneAsync(nowscene);
+            next_scene.allowSceneActivation = true;
         }
     }
 
@@ -66,18 +74,12 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
+    public void Change_scene(string scene)
+    { SceneManager.LoadSceneAsync(scene); }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player" && !_audio)
-        {
-            _audio = true;
-        }
-    }
+    public void Exit()
+    { Application.Quit(); }
+
 
     void BGM_disappear()
     {

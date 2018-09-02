@@ -8,8 +8,8 @@ public class NPC : MonoBehaviour
     public Flowchart _flowchart;
 
     public string NPC_number;
-
-    public bool hit = false;
+    private Transform _player;
+    private bool hit = false;
     public int distance = 3;
 
     private Outline _outline;
@@ -22,6 +22,7 @@ public class NPC : MonoBehaviour
 
         _flowchart = GameObject.FindObjectOfType<Flowchart>();
         _outline = GetComponent<Outline>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -50,9 +51,6 @@ public class NPC : MonoBehaviour
             { is_talk = true; }
         }
         else
-        {
-            _outline.enabled = false;
-
-        }
+        { _outline.enabled = false; }
     }
 }

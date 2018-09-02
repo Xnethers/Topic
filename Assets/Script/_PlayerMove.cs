@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class _PlayerMove : MonoBehaviour
 {
+    public AudioClip walksound;
     private Transform mainCameraT;
     private Transform CameraD;
     public CharacterController _player;
@@ -15,6 +16,7 @@ public class _PlayerMove : MonoBehaviour
     public Vector3 _velocity;
 
     public float Sprint_speed = 30;
+    private AudioSource _audiosource;
 
     public enum MoveState
     {
@@ -42,6 +44,8 @@ public class _PlayerMove : MonoBehaviour
         CameraD_object.name = "Direction";
         CameraD = CameraD_object.transform;
         _playerState = transform.GetComponent<Player_State>();
+        _audiosource = GetComponent<AudioSource>();
+        StartCoroutine(FootSound());
     }
 
     // Update is called once per frame
@@ -95,6 +99,7 @@ public class _PlayerMove : MonoBehaviour
 
             case MoveState.isMove:
                 {
+
                     if (Player_State.ismove)
                     {
                         _player.Move(CameraD.forward * v * Time.deltaTime * speed);
@@ -161,6 +166,7 @@ public class _PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         { _velocity.y += Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y); }
 
+
         //上下左右鍵方向
         if (v > 0)
         { SmoothRotation(CameraD.eulerAngles.y); }
@@ -175,6 +181,21 @@ public class _PlayerMove : MonoBehaviour
         if (Player_State.islock == true && Vertical == 0 && Horizontal == 0 && Player_target._target != null)
         { Rotation_To(Player_target._target.position); }
 
+    }
+
+    IEnumerator FootSound()
+    {
+        //Debug.Log(_player.velocity.magnitude);
+        while (true)
+        {
+            if (_playerState.is_grounded && MS == MoveState.isMove)
+            {
+                _audiosource.PlayOneShot(walksound);
+                yield return new WaitForSeconds(walksound.length);
+            }
+            else
+            { yield return null; }
+        }
     }
 
     public void SmoothRotation(float a)

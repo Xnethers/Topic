@@ -37,11 +37,8 @@ public class damage : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (_type == ObjectType.bucket && other.tag == "Player")
-        {
-            Player_Health.NowHP -= _damage;
-            Destroy(gameObject);
-        }
+        if (_type == ObjectType.bucket )
+        {        }
         else if (_type == ObjectType.amulet && other.tag == "Enemy")
         {
             other.GetComponentInParent<Enemy_Health>()._health -= _damage;

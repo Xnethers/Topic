@@ -11,6 +11,7 @@ public class Player_State : MonoBehaviour
     public bool is_hurt;
 
     public bool can_attack;
+    public bool is_onstair;
 
     public Flowchart _flowchart;
 
@@ -19,6 +20,7 @@ public class Player_State : MonoBehaviour
     public static bool islock;
     public static bool ishurt;
     public static bool canattack;
+    public static bool isonstair;
 
 
 

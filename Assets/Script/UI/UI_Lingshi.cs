@@ -22,6 +22,6 @@ public class UI_Lingshi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _count.text = Bag.Lingshi.ToString("0");
+        //_count.text = Bag.Lingshi.ToString("0");
     }
 }

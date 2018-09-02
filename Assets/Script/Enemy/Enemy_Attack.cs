@@ -14,7 +14,7 @@ public class Enemy_Attack : MonoBehaviour
 
     // Use this for initialization
     void Start()
-    {    }
+    { }
 
     // Update is called once per frame
     void Update()
@@ -38,10 +38,13 @@ public class Enemy_Attack : MonoBehaviour
         if (i == 0)
         {
             if (_thrower != null)
+            {
                 _thrower.enabled = false;
+                _thrower.reset();
+            }
             if (_strike != null)
                 _strike.enabled = false;
-            _thrower.reset();
+
         }
 
     }

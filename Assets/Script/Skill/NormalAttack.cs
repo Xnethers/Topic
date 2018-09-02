@@ -43,7 +43,7 @@ public class NormalAttack : SkillBasicData
             {
                 Player_target._target.GetComponentInParent<Enemy_Health>()._health -= _d; //結算傷害
                 Player_target._target.GetComponentInParent<AI>().isHurt = true;//打擊動畫
-                show_damage(_d,Player_target._target.position);
+                //show_damage(_d,Player_target._target.position);
             }
         }
 

@@ -25,7 +25,7 @@ public class Player_target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_target != null)
+        if (_target)
         {
             _Health = _target.GetComponentInParent<Enemy_Health>();
             if (_Health)

@@ -52,6 +52,7 @@ public class CustomInput : MonoBehaviour
 				if (CheckGroud.ButtonName == buttonName)
 				{
 					return CheckGroud.Key;
+					break;
 				}
 			}
 			Debug.Log("找不到對應輸入鍵 : "+buttonName);

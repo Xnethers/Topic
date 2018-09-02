@@ -23,6 +23,7 @@ public class Creat_Enemy : MonoBehaviour
         float X = Random.Range(min, max);
         float Z = Random.Range(min, max);
         Instantiate(Long_Enemy, transform.position + new Vector3(X, 0, Z), transform.rotation);
+        Instantiate(Near_Enemy, transform.position + new Vector3(X, 0, Z), transform.rotation);
         Enemy_number = GameObject.FindGameObjectsWithTag("Enemy");
     }
 

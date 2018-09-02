@@ -44,7 +44,7 @@ public class Thrower : MonoBehaviour
         {
             Rigidbody bucket = (Rigidbody)Instantiate(bucketSource, transform.position, transform.rotation);
             bucket.transform.SetParent(transform);
-            bucket.velocity = transform.TransformDirection(new Vector3(0, ThrowerPowerY, ThrowerPower * j));
+            bucket.velocity = transform.TransformDirection(new Vector3(0, ThrowerPowerY, ThrowerPower * j)); 
             Physics.IgnoreCollision(bucket.GetComponent<Collider>(), transform.GetComponent<Collider>());
             GetComponent<AudioSource>().PlayOneShot(ThrowerSound);
         }

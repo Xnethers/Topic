@@ -7,18 +7,19 @@ public class UI_Player_healthBar : MonoBehaviour
 {
     public Image HP_Bar;
     public Image MP_Bar;
+    private Player_Health HPMP;
+    
 
     // Use this for initialization
     void Start()
     {
-		
+		HPMP = GameObject.FindWithTag("Player").GetComponent<Player_Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        HP_Bar.fillAmount = Player_Health.NowHP / 100;
-        MP_Bar.fillAmount = Player_Health.NowMP / 100;
-
+        HP_Bar.fillAmount = HPMP.NowHP / HPMP.MaxHP;
+        MP_Bar.fillAmount = HPMP.NowMP / HPMP.MaxMP;
     }
 }

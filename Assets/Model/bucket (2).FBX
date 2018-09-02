@@ -11,10 +11,10 @@ FBXHeaderExtension:  {
 		Year: 2018
 		Month: 5
 		Day: 25
-		Hour: 15
-		Minute: 43
-		Second: 45
-		Millisecond: 747
+		Hour: 23
+		Minute: 38
+		Second: 48
+		Millisecond: 279
 	}
 	Creator: "FBX SDK/FBX Plugins version 2017.1"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -36,13 +36,13 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2017"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "25/05/2018 07:43:45.736"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "25/05/2018 15:38:48.234"
 			P: "Original|FileName", "KString", "", "", "C:\Users\user\Desktop\Topic\Assets\Model\bucket (2).FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2017"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "25/05/2018 07:43:45.736"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "25/05/2018 15:38:48.234"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\user\Documents\3dsMax"
 			P: "Original|ApplicationNativeFile", "KString", "", "", "C:\Users\user\Desktop\美術\bucket.max"
 		}
@@ -62,7 +62,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",2.54
 		P: "OriginalUnitScaleFactor", "double", "Number", "",2.54
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Front"
+		P: "DefaultCamera", "KString", "", "", "Producer Left"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -79,7 +79,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1656777648, "", "Scene" {
+	Document: 2127237328, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -312,12 +312,12 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	NodeAttribute: 1855506208, "NodeAttribute::", "Null" {
+	NodeAttribute: 1808580176, "NodeAttribute::", "Null" {
 		TypeFlags: "Null"
 	}
-	Geometry: 1854616240, "Geometry::", "Mesh" {
+	Geometry: 1810715184, "Geometry::", "Mesh" {
 		Properties70:  {
-			P: "Color", "ColorRGB", "Color", "",0.345098039215686,0.694117647058824,0.105882352941176
+			P: "Color", "ColorRGB", "Color", "",0.341176470588235,0.694117647058824,0.101960784313725
 		}
 		Vertices: *144 {
 			a: -70.4420776367188,-0.156032562255859,0.0794202908873558,-70.4847412109375,-0.0530481934547424,0.0794202908873558,-70.5877227783203,-0.0103905946016312,0.0794202908873558,-70.6907043457031,-0.0530481934547424,0.0794202908873558,-70.7333679199219,-0.156032562255859,0.0794202908873558,-70.6907043457031,-0.259016990661621,0.0794202908873558,-70.5877227783203,-0.301674783229828,0.0794202908873558,-70.4847412109375,-0.259016990661621,0.0794202908873558,-70.4151458740234,-0.156032562255859,0.462456166744232,-70.4656829833984,-0.0339970588684082,0.462456166744232,-70.5877227783203,0.0165517777204514,0.462456166744232,-70.7097625732422,-0.0339970588684082,0.462456166744232,-70.7603149414063,-0.156032562255859,0.462456166744232,-70.7097625732422,-0.278068065643311,0.462456166744232,-70.5877227783203,-0.32861715555191,0.462456166744232,-70.4656829833984,-0.278068065643311,0.462456166744232,-70.4723815917969,-0.0406925529241562,0.337720423936844,-70.4246063232422,-0.156032562255859,0.337720423936844,-70.5877227783203,0.00708292424678802,0.337720423936844,-70.7030639648438,-0.0406925529241562,0.337720423936844,-70.7508392333984,-0.156032562255859,0.337720423936844,-70.7030639648438,-0.271372616291046,0.337720423936844,-70.5877227783203,-0.319148302078247,0.337720423936844,-70.4723815917969,-0.271372616291046,0.337720423936844,-70.484733581543,-0.0530481785535812,0.123135782778263,-70.5877227783203,-0.01039057970047,0.123135782778263,-70.6907043457031,-0.0530481785535812,0.123135782778263,-70.7333602905273,-0.156032562255859,0.123135782778263,-70.6907043457031,-0.259016931056976,0.123135782778263,-70.5877227783203,-0.301674783229828,0.123135782778263,-70.484733581543,-0.259016931056976,0.123135782778263,-70.4420776367188,-0.156032562255859,0.123135782778263,-70.4240798950195,-0.156032562255859,0.462456166744232,-70.4720077514648,-0.0403168871998787,0.462456166744232,-70.5877227783203,0.00761422514915466,0.462456166744232,-70.7034454345703,-0.0403168871998787,0.462456166744232,-70.7513656616211,-0.156032562255859,0.462456166744232,
@@ -398,9 +398,9 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1854631472, "Geometry::", "Mesh" {
+	Geometry: 1810710288, "Geometry::", "Mesh" {
 		Properties70:  {
-			P: "Color", "ColorRGB", "Color", "",0.345098039215686,0.694117647058824,0.105882352941176
+			P: "Color", "ColorRGB", "Color", "",0.341176470588235,0.694117647058824,0.101960784313725
 		}
 		Vertices: *126 {
 			a: 49.9016990661621,-19.0571727752686,-0.202160552144051,49.9859580993652,-19.1967639923096,-0.202293395996094,50.1486129760742,-19.1929035186768,-0.202472642064095,50.2269744873047,-19.0494556427002,-0.202519223093987,50.1426887512207,-18.9098625183105,-0.202386438846588,49.9800605773926,-18.9137210845947,-0.202207133173943,49.8207206726074,-19.1475944519043,-0.174590691924095,49.9049873352051,-19.2871856689453,-0.174723476171494,50.0676345825195,-19.2833309173584,-0.174902781844139,50.1459999084473,-19.1398811340332,-0.17494934797287,50.0617141723633,-19.0002899169922,-0.174816519021988,49.8990821838379,-19.0041465759277,-0.174637258052826,48.4944381713867,-19.0985260009766,-0.148157835006714,48.5576629638672,-19.2401332855225,-0.147443488240242,48.6841354370117,-19.2401332855225,-0.146014779806137,48.7473831176758,-19.0985260009766,-0.145300477743149,48.6841354370117,-18.9569187164307,-0.146014779806137,48.5576629638672,-18.9569187164307,-0.147443488240242,45.1769104003906,-19.0985260009766,-0.132035553455353,45.2138938903809,-19.2401332855225,-0.131201460957527,45.2878379821777,-19.2401332855225,-0.129533514380455,45.3248176574707,-19.0985260009766,-0.128699496388435,45.2878379821777,-18.9569187164307,-0.129533514380455,45.2138938903809,-18.9569187164307,-0.131201460957527,42.0896301269531,-19.0985260009766,-0.145057499408722,41.9897842407227,-19.2401332855225,-0.144757390022278,41.7900886535645,-19.2401332855225,-0.144157230854034,41.6902465820313,-19.0985260009766,-0.143857091665268,41.7900886535645,-18.9569187164307,-0.144157230854034,41.9897842407227,-18.9569187164307,-0.144757390022278,40.6288948059082,-19.0985260009766,-0.173527792096138,40.5519256591797,-19.2401313781738,-0.1732277572155,40.3979949951172,-19.2401313781738,-0.172627583146095,40.3210182189941,-19.0985260009766,-0.172327429056168,40.3979949951172,-18.9569187164307,-0.172627583146095,40.5519256591797,-18.9569187164307,-0.1732277572155,40.5044326782227,-19.0985260009766,-0.201863273978233,40.4226684570313,-19.2401313781738,-0.201863273978233,
@@ -482,24 +482,32 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1856065008, "Model::bucket", "Null" {
+	Model: 2134787968, "Model::bucket", "Null" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "MaxHandle", "int", "Integer", "UH",3
+			P: "mr displacement use global settings", "Bool", "", "AU",1
+			P: "mr displacement view dependent", "Bool", "", "AU",1
+			P: "mr displacement method", "Integer", "", "AU",6,6,6
+			P: "mr displacement smoothing on", "Bool", "", "AU",1
+			P: "mr displacement edge length", "Number", "", "AU",2,2,2
+			P: "mr displacement max displace", "Number", "", "AU",20,20,20
+			P: "mr displacement parametric subdivision level", "Integer", "", "AU",5,5,5
+			P: "MaxHandle", "int", "Integer", "UH",1
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1856071584, "Model::bucket001", "Mesh" {
+	Model: 2134770432, "Model::bucket001", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",70.5877304077148,0.156032681465149,-0.270938217639923
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",2779.0390625,6.14306640625,-15.26708984375
+			P: "Lcl Translation", "Lcl Translation", "", "A",-0.00537109375,4.72068786621094e-05,-4.6002311706543
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",39.3700790405273,39.3700790405273,39.3700790405273
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
@@ -514,13 +522,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1856067200, "Model::bucket002", "Mesh" {
+	Model: 2134790160, "Model::bucket002", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",-45.2021789550781,19.0985221862793,0.165609359741211
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",-64.062255859375,27.54833984375,28.8994140625
+			P: "Lcl Translation", "Lcl Translation", "", "A",-0.00019073486328125,0.481264114379883,7.33442306518555
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.41723394393921,1.41723394393921,130.216018676758
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
@@ -530,12 +539,12 @@ Objects:  {
 			P: "mr displacement max displace", "Number", "", "AU",20,0,100
 			P: "mr displacement parametric subdivision level", "Integer", "", "AU",5,0,100
 			P: "UDP3DSMAX", "KString", "", "U", "MapChannel:1 = UVChannel_1&cr;&lf;"
-			P: "MaxHandle", "int", "Integer", "UH",1
+			P: "MaxHandle", "int", "Integer", "UH",3
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2280673840, "Material::10 - Default", "" {
+	Material: 1812780816, "Material::10 - Default", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -557,7 +566,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2280696880, "Material::16 - Default", "" {
+	Material: 1812781296, "Material::16 - Default", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -579,7 +588,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Video: 2280655936, "Video::Map #37", "Clip" {
+	Video: 1815224480, "Video::Map #37", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\user\Desktop\Topic\Assets\Model\bucket (2).fbm\bucket01.png"
@@ -588,7 +597,7 @@ Objects:  {
 		Filename: "C:\Users\user\Desktop\Topic\Assets\Model\bucket (2).fbm\bucket01.png"
 		RelativeFilename: "bucket (2).fbm\bucket01.png"
 	}
-	Video: 2280661936, "Video::Map #39", "Clip" {
+	Video: 1815224880, "Video::Map #39", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "C:\Users\user\Desktop\Topic\Assets\Model\bucket (2).fbm\bucket02.png"
@@ -597,7 +606,7 @@ Objects:  {
 		Filename: "C:\Users\user\Desktop\Topic\Assets\Model\bucket (2).fbm\bucket02.png"
 		RelativeFilename: "bucket (2).fbm\bucket02.png"
 	}
-	Texture: 2280698320, "Texture::Map #37", "" {
+	Texture: 1812781776, "Texture::Map #37", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::Map #37"
@@ -613,7 +622,7 @@ Objects:  {
 		Texture_Alpha_Source: "Alpha_Black"
 		Cropping: 0,0,0,0
 	}
-	Texture: 2280679600, "Texture::Map #39", "" {
+	Texture: 1303857120, "Texture::Map #39", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::Map #39"
@@ -637,41 +646,41 @@ Objects:  {
 Connections:  {
 	
 	;Model::bucket, Model::RootNode
-	C: "OO",1856065008,0
+	C: "OO",2134787968,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1849350944,1848841920
+	C: "OO",1818105888,1817657696
 	
 	;Model::bucket001, Model::bucket
-	C: "OO",1856071584,1856065008
+	C: "OO",2134770432,2134787968
 	
 	;Model::bucket002, Model::bucket
-	C: "OO",1856067200,1856065008
+	C: "OO",2134790160,2134787968
 	
 	;NodeAttribute::, Model::bucket
-	C: "OO",1855506208,1856065008
+	C: "OO",1808580176,2134787968
 	
 	;Geometry::, Model::bucket001
-	C: "OO",1854616240,1856071584
+	C: "OO",1810715184,2134770432
 	
 	;Material::10 - Default, Model::bucket001
-	C: "OO",2280673840,1856071584
+	C: "OO",1812780816,2134770432
 	
 	;Geometry::, Model::bucket002
-	C: "OO",1854631472,1856067200
+	C: "OO",1810710288,2134790160
 	
 	;Material::16 - Default, Model::bucket002
-	C: "OO",2280696880,1856067200
+	C: "OO",1812781296,2134790160
 	
 	;Texture::Map #37, Material::10 - Default
-	C: "OP",2280698320,2280673840, "DiffuseColor"
+	C: "OP",1812781776,1812780816, "DiffuseColor"
 	
 	;Video::Map #37, Texture::Map #37
-	C: "OO",2280655936,2280698320
+	C: "OO",1815224480,1812781776
 	
 	;Texture::Map #39, Material::16 - Default
-	C: "OP",2280679600,2280696880, "DiffuseColor"
+	C: "OP",1303857120,1812781296, "DiffuseColor"
 	
 	;Video::Map #39, Texture::Map #39
-	C: "OO",2280661936,2280679600
+	C: "OO",1815224880,1303857120
 }

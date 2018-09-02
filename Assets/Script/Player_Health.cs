@@ -8,11 +8,11 @@ public class Player_Health : MonoBehaviour
 
     
     public int MaxHP;
-	public static float NowHP;
+	public  float NowHP;
 	public int MaxMP;
 
 	[SerializeField]
-	public static float NowMP;
+	public  float NowMP;
 	public float SecMP;
     public bool isDead = false;
 	public bool isInvincibility = false;
@@ -66,7 +66,7 @@ public class Player_Health : MonoBehaviour
 		}
 	}
 
-	public static void SetHP(int damage)
+	public  void SetHP(int damage)
 	{
 		NowHP -= damage;
 	}
