@@ -16,6 +16,8 @@ public class AI3 : MonoBehaviour
     public AIState Status;
     NavMeshAgent nav;
     Vector3 currentDestination;
+
+    public List<int> transSTATE = new List<int>();
     public Transform p1;
 
     Vector3 _p1;
@@ -44,7 +46,6 @@ public class AI3 : MonoBehaviour
             case AIState.RandomMoving:
                 {
                     random_moving();
-					Debug.Log("00");
                     break;
                 }
             case AIState.Track:
@@ -68,27 +69,11 @@ public class AI3 : MonoBehaviour
             if (nav.remainingDistance < 0.5f)  //到达目的地后暂停3s，然后切换目的地，达到来回走动的效果
             {
                 canMoving = false;
-                StartCoroutine(delayCoroutine());     //停留3s再返回
+                StartCoroutine(delayCoroutine(waitTime));     //停留3s再返回
             }
         }
     }
-
-
-    IEnumerator delayCoroutine()
-    {
-
-        if (Vector3.Equals(currentDestination, _p1))
-        {
-            currentDestination = _p2;
-        }
-        else
-        {
-            currentDestination = _p1;
-        }
-        yield return new WaitForSeconds(waitTime);
-        canMoving = true;
-		
-    }
+    
 
     void track()
     {
@@ -103,10 +88,32 @@ public class AI3 : MonoBehaviour
         }
     }
 
-	public void SmoothRotation(float a)
+    public void SmoothRotation(float a)//旋轉角度
     {
         float y = 3.0f;
         float rotateSpeed = 0.1f;
         transform.eulerAngles = new Vector3(0, Mathf.SmoothDampAngle(transform.eulerAngles.y, a, ref y, rotateSpeed), 0);
     }
+
+    public void DistanceOfTransform(float t)//移動
+    {
+        Vector3 target_P = transform.position + Vector3.forward * t;
+        transform.position = Vector3.MoveTowards(transform.position,target_P,Time.deltaTime);
+    }
+
+    IEnumerator delayCoroutine(float waittime)//停滯時間
+    {
+
+        if (Vector3.Equals(currentDestination, _p1))
+        {
+            currentDestination = _p2;
+        }
+        else
+        {
+            currentDestination = _p1;
+        }
+        yield return new WaitForSeconds(waittime);
+        canMoving = true;
+    }
+
 }

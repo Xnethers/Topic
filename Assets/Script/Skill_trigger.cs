@@ -34,8 +34,8 @@ public class Skill_trigger : MonoBehaviour
                 n++;
         }
 
-        if (Player_target._target == null)
-        { Player_State.islock = false; }
+        if (Player_State.islock == false)
+        { Player_target._target = null; }
 
 
     }
@@ -53,7 +53,6 @@ public class Skill_trigger : MonoBehaviour
                     {
                         Player_State.islock = true;
                         Player_target._target = hitColliders[n].transform;
-                        n = k;
                         break;
                     }
             }
@@ -62,22 +61,23 @@ public class Skill_trigger : MonoBehaviour
         if (Player_State.islock == true)
         {
             if (Player_target._target != null && Vector3.Distance(Player_target._target.position, transform.position) > _distance * 1.2)
-            { Player_target._target = null; }
+            { Player_State.islock = false; }
             else if (Player_target._target != null && !detection(Player_target._target.position))
-            { Player_target._target = null; }
+            { Player_State.islock = false; }
         }
 
     }
 
     bool detection(Vector3 target)
     {
+
         Vector3 front_direction = transform.forward;
         Vector3 target_direction = target - transform.position;
         deg = Mathf.Acos(Vector3.Dot(front_direction.normalized, target_direction.normalized)) * Mathf.Rad2Deg;
-        RaycastHit hit;
-        Physics.Raycast(transform.position, target_direction, out hit);
+        /* RaycastHit hit;
+        Physics.Raycast(transform.position, target_direction, out hit);hit.collider.tag == */
         {
-            if (hit.collider.tag == "Enemy" && deg < _angle / 2)
+            if (  deg < _angle / 2)
             { return true; }
             else
             { return false; }

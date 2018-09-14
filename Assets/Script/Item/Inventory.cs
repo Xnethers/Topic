@@ -67,4 +67,9 @@ public class Inventory : MonoBehaviour
 			}
 		}
 	}
+
+	public void closeButton(GameObject _inventory)
+	{
+		_inventory.SetActive(false);
+	}
 }

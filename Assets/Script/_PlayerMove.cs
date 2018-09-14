@@ -129,8 +129,8 @@ public class _PlayerMove : MonoBehaviour
 
             case MoveState.isSprint:
                 {
-                    _player.Move(CameraD.forward * v * Time.deltaTime * speed * Sprint_speed);
-                    _player.Move(CameraD.right * h * Time.deltaTime * speed * Sprint_speed);
+                    _player.Move(CameraD.forward * v * Time.deltaTime  * Sprint_speed);
+                    _player.Move(CameraD.right * h * Time.deltaTime  * Sprint_speed);
                     MS = MoveState.isMove;
                     if (v == 0 && h == 0)
                     {
