@@ -22,7 +22,7 @@ public class SmoothFollowCSharp : MonoBehaviour
     public float ScrollWheelspeed = 60.0f;
     //public float horizontalRotation = 5.0f;
 
-    float z = 100;
+    float z = 10;
 
     public float x;
     public float y;
@@ -47,6 +47,7 @@ public class SmoothFollowCSharp : MonoBehaviour
             return;
         if (target)
         {
+            /* 
             if (Input.GetMouseButton(1))
             {
                 float x1 = x + Input.GetAxis("Mouse X");
@@ -58,9 +59,10 @@ public class SmoothFollowCSharp : MonoBehaviour
                 if (transform.position.z < target.position.z)
                     transform.RotateAround(target.position, -Vector3.right, y * horizontalRotation);
                 else
-                    transform.RotateAround(target.position, Vector3.right, y * horizontalRotation);*/
+                    transform.RotateAround(target.position, Vector3.right, y * horizontalRotation);
             }
-            if (Input.GetMouseButton(0))
+            */
+            if (Input.GetMouseButton(1))
             {
                 x += Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity * z;
                 y -= Input.GetAxis("Mouse Y") * Time.deltaTime * sensitivity * z;
