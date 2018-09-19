@@ -18,7 +18,7 @@ public enum AIState
 public class AI : MonoBehaviour
 {
     public EnemyType _type;
-    public AIState Status;
+    public AIState Status = new AIState{};
 
     private RandomMove _randommove;
 

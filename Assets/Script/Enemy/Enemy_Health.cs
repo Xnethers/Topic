@@ -17,13 +17,19 @@ public class Enemy_Health : MonoBehaviour
     void Start()
     {
         _ai = GetComponent<AI>();
-        _fall =GetComponent<Fall_item>();
+        _fall = GetComponent<Fall_item>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_health < 0)
+        if (gameObject.tag == "Enemy")
+            dead();
+    }
+
+    void dead()
+    {
+        if (_health <= 0)
         {
             ParticleSystem _dieparticle = (ParticleSystem)Instantiate(Die_particle, transform.position, Die_particle.transform.rotation);
             _dieparticle.transform.SetParent(transform);
@@ -31,10 +37,11 @@ public class Enemy_Health : MonoBehaviour
             _ai._animator.Play("M_die");
             _health = 0;
         }
+
         if (_health == 0)
         {
             Destroy(gameObject, Die_time);
-            Destroy(_fall,Die_time);
+            Destroy(_fall, Die_time);
         }
     }
 }

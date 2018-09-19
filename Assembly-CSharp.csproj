@@ -574,6 +574,7 @@
      <Compile Include="Assets\Script\Enemy\AI.cs" />
      <Compile Include="Assets\Script\Enemy\AI3.cs" />
      <Compile Include="Assets\Script\Enemy\BookCase.cs" />
+     <Compile Include="Assets\Script\Enemy\Boss_AI.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy_Attack.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy_Health.cs" />
      <Compile Include="Assets\Script\Enemy\Strike.cs" />
