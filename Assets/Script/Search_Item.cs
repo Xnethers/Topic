@@ -55,8 +55,6 @@ public class Search_Item : MonoBehaviour
                 _itemup = _object.GetComponent<ItemPickup>();
                 return true;
             }
-            else if (hit[0].tag == "NPC")
-            { return true; }
             else
             { return false; }
         }

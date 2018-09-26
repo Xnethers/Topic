@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//技能UI顯示
 public class Skill_CD : MonoBehaviour
 {
     public Image[] _skill;

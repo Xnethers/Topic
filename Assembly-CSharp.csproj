@@ -574,11 +574,13 @@
      <Compile Include="Assets\Script\Enemy\AI.cs" />
      <Compile Include="Assets\Script\Enemy\AI3.cs" />
      <Compile Include="Assets\Script\Enemy\BookCase.cs" />
+     <Compile Include="Assets\Script\Enemy\BossSkillList.cs" />
      <Compile Include="Assets\Script\Enemy\Boss_AI.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy_Attack.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy_Health.cs" />
      <Compile Include="Assets\Script\Enemy\Strike.cs" />
      <Compile Include="Assets\Script\Enemy\Track.cs" />
+     <Compile Include="Assets\Script\Enemy\noisewave.cs" />
      <Compile Include="Assets\Script\Enemy_Drop.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <Compile Include="Assets\Script\GameSaveXML.cs" />
@@ -610,6 +612,7 @@
      <Compile Include="Assets\Script\SmoothFollowCSharp.cs" />
      <Compile Include="Assets\Script\Stair.cs" />
      <Compile Include="Assets\Script\Story.cs" />
+     <Compile Include="Assets\Script\TalktoNPC.cs" />
      <Compile Include="Assets\Script\Thrower.cs" />
      <Compile Include="Assets\Script\UI\Inventory_UI.cs" />
      <Compile Include="Assets\Script\_08_Thrower.cs" />

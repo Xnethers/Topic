@@ -31,7 +31,7 @@ public abstract class SkillBasicData : MonoBehaviour
     private Abilityvalue _ability;
     private UI_Damage Damage_UI;
 
-    private GameObject _player;
+    protected GameObject _player;
     private Player_Health HPMP ;
 
     void Awake()

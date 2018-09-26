@@ -52,16 +52,15 @@ public class Fairy_guide : SkillBasicData
                 DrawTool.EndDraw(Rectangle_p, true);
                 isAnimation = false;
             }
-        }  
+        }
     }
-    
+
     //獲取範圍內敵人
     void OnTriggerEnter(Collider other)
     {
-        int j;
         if (other.tag == "Enemy")
         {
-            for (j = 0; j < targetColliders.Length; j++)
+            for (int j = 0; j < targetColliders.Length; j++)
             {
                 if (targetColliders[j] == other)
                 { }
@@ -79,9 +78,8 @@ public class Fairy_guide : SkillBasicData
 
     void settle()//結算
     {
-        int i;
         int _d = CalculateDamege();
-        for (i = 0; i < targetColliders.Length; i++)
+        for (int i = 0; i < targetColliders.Length; i++)
         {
             if (targetColliders[i] != null)
             {

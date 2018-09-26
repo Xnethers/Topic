@@ -12,7 +12,7 @@ public class damage : MonoBehaviour
         bucket,
         amulet
 
-    } 
+    }
     public ObjectType _type;
     public float _damage;
     public float DestroyTime = 3;
@@ -37,8 +37,11 @@ public class damage : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (_type == ObjectType.bucket )
-        {        }
+        if (_type == ObjectType.bucket && other.tag == "Player")
+        {
+            other.GetComponentInParent<Player_Health>().NowHP -= _damage;
+            Destroy(gameObject);
+        }
         else if (_type == ObjectType.amulet && other.tag == "Enemy")
         {
             other.GetComponentInParent<Enemy_Health>()._health -= _damage;

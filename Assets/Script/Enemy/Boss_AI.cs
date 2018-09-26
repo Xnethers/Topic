@@ -13,10 +13,10 @@ public class Boss_AI : MonoBehaviour
 
     enum skill_list
     {
-        //音波
-        //月牙天沖
-        //甩衝擊波下來-主角攻擊一定時間減弱（30% 5秒）
-        //殘血大招：召喚小怪（3-4隻）
+        noisewave,//音波
+        sniper,//月牙天沖
+        shockwave,//甩衝擊波下來-主角攻擊一定時間減弱（30% 5秒）
+        summon//殘血大招：召喚小怪（3-4隻）
     }
 
     public Boss_Statement boss_Statement;//Boss當前狀態
@@ -24,10 +24,22 @@ public class Boss_AI : MonoBehaviour
     public GameObject _player;
 
     skill_list boss_skill;
-    public int _distance; //與玩家距離
+    //public int _distance; //與玩家距離
 
     public Enemy_Health boss_health;
-    bool is_move;
+    bool can_attack;
+
+    [Header("技能1")]
+
+    public int distance_1;
+
+    [Header("技能2")]
+
+    public int distance_2;
+
+    [Header("技能3")]
+
+    public int distance_3;
 
 
 
@@ -65,10 +77,10 @@ public class Boss_AI : MonoBehaviour
 
     }
 
-    void Movement()
+    void Movement(int d)
     {
-        is_move = Physics.CheckSphere(transform.position, _distance, 1 << LayerMask.NameToLayer("Player"));
-        if (is_move)
+        can_attack = Physics.CheckSphere(transform.position, d, 1 << LayerMask.NameToLayer("Player"));
+        if (!can_attack)
         { transform.position = Vector3.Lerp(transform.position, _player.transform.position, Time.deltaTime); }
         else
         { }
@@ -76,17 +88,24 @@ public class Boss_AI : MonoBehaviour
 
     void Attack()
     {
-		switch (boss_skill)
+        float b_p_d = Vector3.Distance(transform.position, _player.transform.position);
+        switch (boss_skill)
         {
-            case skill_list.Move:
+
+            case skill_list.noisewave:
+                {
+                    
+                        break;
+                }
+            case skill_list.sniper:
                 {
                     break;
                 }
-            case skill_list.Attack:
+            case skill_list.shockwave:
                 {
                     break;
                 }
-            case skill_list.Dead:
+            case skill_list.summon:
                 {
                     break;
                 }
