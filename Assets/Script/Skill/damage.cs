@@ -4,7 +4,7 @@ using UnityEngine;
 /*附加腳本時自動生成Animator元件*/
 [RequireComponent(typeof(Animator))]
 
-
+//投擲物
 public class damage : MonoBehaviour
 {
     public enum ObjectType

@@ -22,48 +22,49 @@ public class Skill_trigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Find_Target();
-        if (Player_State.islock == true && Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (n == hitColliders.Length - 1)
-            {
-                n = 0;
-                Player_State.islock = false;
-            }
-            else
-                n++;
-        }
-
-        if (Player_State.islock == false)
+        if (isLock == true)
+        { Player_target._target = hitColliders[n].transform; }
+        else
         { Player_target._target = null; }
 
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (n == hitColliders.Length - 1)
+            { isLock = false; n = 0; }
+            else
+            { n++; }
+        }
+    }
 
+    void FixedUpdate()
+    {
+        Find_Target();
     }
 
     public void Find_Target()
     {
         hitColliders = Physics.OverlapSphere(transform.position, _distance, 1 << LayerMask.NameToLayer("Enemy"));
 
-        if (Player_State.islock == false)
+        if (isLock == false)
         {
             for (int k = 0; k < hitColliders.Length; k++)
             {
                 if (hitColliders[k] != null)
                     if (detection(hitColliders[k].transform.position))
                     {
-                        Player_State.islock = true;
-                        Player_target._target = hitColliders[n].transform;
+                        isLock = true;
+                        Player_target._target = hitColliders[k].transform;
                         break;
                     }
             }
         }
 
-        if (Player_State.islock == true)
+        if (isLock == true)
         {
             if (Player_target._target != null && Vector3.Distance(Player_target._target.position, transform.position) > _distance * 1.2)
-            { Player_State.islock = false; }
+            { isLock = false; }
             else if (Player_target._target != null && !detection(Player_target._target.position))
-            { Player_State.islock = false; }
+            { isLock = false; }
         }
 
     }
@@ -77,7 +78,7 @@ public class Skill_trigger : MonoBehaviour
         /* RaycastHit hit;
         Physics.Raycast(transform.position, target_direction, out hit);hit.collider.tag == */
         {
-            if (  deg < _angle / 2)
+            if (deg < _angle / 2)
             { return true; }
             else
             { return false; }

@@ -573,14 +573,18 @@
      <Compile Include="Assets\Script\Direction.cs" />
      <Compile Include="Assets\Script\Enemy\AI.cs" />
      <Compile Include="Assets\Script\Enemy\AI3.cs" />
+     <Compile Include="Assets\Script\Enemy\Attack.cs" />
      <Compile Include="Assets\Script\Enemy\BookCase.cs" />
      <Compile Include="Assets\Script\Enemy\BossSkillList.cs" />
      <Compile Include="Assets\Script\Enemy\Boss_AI.cs" />
+     <Compile Include="Assets\Script\Enemy\DestoryPS.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy_Attack.cs" />
      <Compile Include="Assets\Script\Enemy\Enemy_Health.cs" />
+     <Compile Include="Assets\Script\Enemy\MoveForward.cs" />
      <Compile Include="Assets\Script\Enemy\Strike.cs" />
      <Compile Include="Assets\Script\Enemy\Track.cs" />
      <Compile Include="Assets\Script\Enemy\noisewave.cs" />
+     <Compile Include="Assets\Script\Enemy\sniper.cs" />
      <Compile Include="Assets\Script\Enemy_Drop.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <Compile Include="Assets\Script\GameSaveXML.cs" />
@@ -605,6 +609,7 @@
      <Compile Include="Assets\Script\Skill\SkillBasicData.cs" />
      <Compile Include="Assets\Script\Skill\Skill_CD.cs" />
      <Compile Include="Assets\Script\Skill\SkillsInfo.cs" />
+     <Compile Include="Assets\Script\Skill\Tirgger_Of_FlyingSword.cs" />
      <Compile Include="Assets\Script\Skill\damage.cs" />
      <Compile Include="Assets\Script\SkillFlag.cs" />
      <Compile Include="Assets\Script\Skill_trigger.cs" />

@@ -5,9 +5,10 @@ using UnityEngine;
 public class Fairy_guide : SkillBasicData
 {
     public GameObject sword;
+    public GameObject _trigger;
     public AnimationClip fairy_guide;
     float ani_time;
-    public Collider[] targetColliders;
+    //public Collider[] targetColliders;
     GameObject _sword;
     public Transform Rectangle_p;
 
@@ -21,7 +22,7 @@ public class Fairy_guide : SkillBasicData
     // Update is called once per frame
     void Update()
     {
-        DrawTool.DrawRectangleSolid(Rectangle_p, Rectangle_p.position, _distance, transform.localScale.x * 2);//攻擊範圍標示
+        //DrawTool.DrawRectangleSolid(Rectangle_p, Rectangle_p.position, _distance, transform.localScale.x * 2);//攻擊範圍標示
 
         //進入CD
         CDing();
@@ -34,9 +35,11 @@ public class Fairy_guide : SkillBasicData
         {
             CostMP();
             _sword = Instantiate(sword, transform.position, transform.rotation);
+            GameObject tri = Instantiate(_trigger, transform);
+            Physics.IgnoreCollision(tri.GetComponent<Collider>(), _player.GetComponent<Collider>());
             _sword.transform.SetParent(transform);
-            StartCD();
-            settle();
+            StartCD(); isUse = false;
+            //settle();
         }
 
         //播放動畫
@@ -44,18 +47,19 @@ public class Fairy_guide : SkillBasicData
         {
 
             ani_time -= Time.deltaTime;
-            DrawTool.Draw(Rectangle_p, true);
+            //DrawTool.Draw(Rectangle_p, true);
             if (ani_time <= 0)
             {
                 ani_time = fairy_guide.length;
                 Destroy(_sword);
-                DrawTool.EndDraw(Rectangle_p, true);
+                //DrawTool.EndDraw(Rectangle_p, true);
                 isAnimation = false;
             }
         }
     }
 
     //獲取範圍內敵人
+    /* 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
@@ -74,8 +78,9 @@ public class Fairy_guide : SkillBasicData
             }
         }
     }
+    */
 
-
+    /* 
     void settle()//結算
     {
         int _d = CalculateDamege();
@@ -89,8 +94,9 @@ public class Fairy_guide : SkillBasicData
                 targetColliders[i] = null;
             }
         }
-        isUse = false;
+        
     }
+    */
 
     /*
     void OnDrawGizmosSelected()

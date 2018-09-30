@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class BossSkillList : MonoBehaviour {
 
-
-	ParticleSystem _noisewaveParticle;
+	public noisewave _noisewave;
 
 	// Use this for initialization
 	void Start () {
