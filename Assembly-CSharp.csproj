@@ -582,8 +582,10 @@
      <Compile Include="Assets\Script\Enemy\Enemy_Health.cs" />
      <Compile Include="Assets\Script\Enemy\MoveForward.cs" />
      <Compile Include="Assets\Script\Enemy\Strike.cs" />
+     <Compile Include="Assets\Script\Enemy\Stun.cs" />
      <Compile Include="Assets\Script\Enemy\Track.cs" />
      <Compile Include="Assets\Script\Enemy\noisewave.cs" />
+     <Compile Include="Assets\Script\Enemy\shock_wave.cs" />
      <Compile Include="Assets\Script\Enemy\sniper.cs" />
      <Compile Include="Assets\Script\Enemy_Drop.cs" />
      <Compile Include="Assets\Script\Follow.cs" />

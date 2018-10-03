@@ -11,8 +11,6 @@ public class doorlocker : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        for (int j = 0; j < locker.Count; j++)
-        { }
         _inventory = FindObjectOfType<Inventory>();
         Debug.Log(_inventory);
     }
@@ -24,16 +22,15 @@ public class doorlocker : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && _inventory)
         {
-            if (_inventory)
+            foreach (Item i in _inventory.items)
             {
-                for (int i = 0; i < _inventory.items.Count; i++)
+                if (i == _key)
                 {
-                    if (_inventory.items[i] == _key)
-                    {}
+                    foreach (dooropen k in locker)
+                    { k.enabled = true; }
                 }
-
             }
         }
     }

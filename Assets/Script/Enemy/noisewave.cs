@@ -9,7 +9,8 @@ public class noisewave : SkillBasicData
     //public float Passtime = 0;//宣告經過時間
     public float interval = 0.25f;//宣告子彈間隔時間
 
-    bool shot;
+    bool shot = false;
+    public int count = 0; //子彈數
     int i = 0;
 
     // Use this for initialization
@@ -21,21 +22,20 @@ public class noisewave : SkillBasicData
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(i);
-        //Passtime += Time.deltaTime;
         //Debug
         if (Input.GetKeyDown(KeyCode.M))
         { UseSkill(); shot = true; }
+        //
 
         if (CanUseSkill && isUse)
         {
-            if (shot && i < 5)
+            if (shot && i < count)
             {
                 GameObject bullet = Instantiate(_noisewave, Point);
                 i++;
                 StartCoroutine(timer());
             }
-            if (i == 5)
+            if (i == count)
             { StartCD(); isUse = false; i = 0; }
         }
         //進入CD
@@ -46,6 +46,7 @@ public class noisewave : SkillBasicData
     void Noisewave()
     {
         UseSkill();
+        shot = true;
     }
 
     IEnumerator timer()

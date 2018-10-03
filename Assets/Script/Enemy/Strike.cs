@@ -41,6 +41,7 @@ public class Strike : MonoBehaviour
             if (time <= 0)
             {
                 _playerhealth.NowHP -= _damage;
+                Debug.Log("hit Player");
                 GetComponent<AudioSource>().PlayOneShot(Sound);
                 time = _timer;
             }

@@ -10,16 +10,17 @@ public class DestoryPS : MonoBehaviour
     private BoxCollider _collision;
     public float speed = 30.0f;
     public float Damage = 0;
-    float Scale = 0;
-    int minscale = 1;
-    int maxscale = 5;
-    int lifttime = 4;
 
+    public bool trigger_destory = false;
+
+    [Header("Change Trigger Scale")]
+    public bool If_change = true;
+    public Vector3 maxscale = new Vector3(3, 0.3f, 3);
     void Start()
     {
         ps = this.GetComponent<ParticleSystem>();//取得粒子
         _collision = this.GetComponent<BoxCollider>();
-        
+
     }
 
     void Update()
@@ -33,8 +34,8 @@ public class DestoryPS : MonoBehaviour
 
     void FixedUpdate()
     {
-        _collision.size = Vector3.Lerp(_collision.size, new Vector3(maxscale, maxscale, _collision.size.z), Time.deltaTime);
-        Debug.Log(Scale);
+        if (If_change)
+            _collision.size = Vector3.Lerp(_collision.size, maxscale, Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)
@@ -42,6 +43,7 @@ public class DestoryPS : MonoBehaviour
         Debug.Log("hit");
         if (other.gameObject.tag == "Player")
         { other.gameObject.GetComponent<Player_Health>().NowHP -= Damage; }
-        Destroy(this.gameObject);
+        if (trigger_destory)
+        { Destroy(this.gameObject); }
     }
 }

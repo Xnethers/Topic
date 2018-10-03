@@ -39,9 +39,15 @@ public class dooropen : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            _animator.SetBool("open", true);
+            //_animator.SetBool("open", true);
             _audioSource.PlayOneShot(open_sound);
         }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {_animator.SetBool("open", true);}
     }
 
     void OnTriggerExit(Collider other)
