@@ -6,8 +6,11 @@ public class noisewave : SkillBasicData
 {
     public GameObject _noisewave;//宣告投射物
     public Transform Point;//宣告複製原點
-    public float Passtime = 0;//宣告經過時間
+    //public float Passtime = 0;//宣告經過時間
     public float interval = 0.25f;//宣告子彈間隔時間
+
+    bool shot;
+    int i = 0;
 
     // Use this for initialization
     void Start()
@@ -18,23 +21,22 @@ public class noisewave : SkillBasicData
     // Update is called once per frame
     void Update()
     {
-        Passtime += Time.deltaTime;
+        Debug.Log(i);
+        //Passtime += Time.deltaTime;
         //Debug
         if (Input.GetKeyDown(KeyCode.M))
-            UseSkill();
+        { UseSkill(); shot = true; }
 
         if (CanUseSkill && isUse)
         {
-            for (int i = 0; i < 5; i++)
+            if (shot && i < 5)
             {
-                if (Passtime > interval)
-                {
-                    GameObject bullet = Instantiate(_noisewave, Point);
-                    Passtime = 0;
-                }
-                if (i == 4)
-                { StartCD(); isUse = false; }
+                GameObject bullet = Instantiate(_noisewave, Point);
+                i++;
+                StartCoroutine(timer());
             }
+            if (i == 5)
+            { StartCD(); isUse = false; i = 0; }
         }
         //進入CD
         CDing();
@@ -44,6 +46,13 @@ public class noisewave : SkillBasicData
     void Noisewave()
     {
         UseSkill();
+    }
+
+    IEnumerator timer()
+    {
+        shot = false;
+        yield return new WaitForSeconds(interval);
+        shot = true;
     }
 
     public bool Rotation_To(Vector3 t)

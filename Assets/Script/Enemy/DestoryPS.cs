@@ -11,11 +11,15 @@ public class DestoryPS : MonoBehaviour
     public float speed = 30.0f;
     public float Damage = 0;
     float Scale = 0;
+    int minscale = 1;
+    int maxscale = 5;
+    int lifttime = 4;
 
     void Start()
     {
         ps = this.GetComponent<ParticleSystem>();//取得粒子
         _collision = this.GetComponent<BoxCollider>();
+        
     }
 
     void Update()
@@ -29,8 +33,8 @@ public class DestoryPS : MonoBehaviour
 
     void FixedUpdate()
     {
-        Scale += Time.deltaTime / speed;
-        _collision.size = new Vector3(_collision.size.x + Scale, _collision.size.y + Scale, _collision.size.z);
+        _collision.size = Vector3.Lerp(_collision.size, new Vector3(maxscale, maxscale, _collision.size.z), Time.deltaTime);
+        Debug.Log(Scale);
     }
 
     void OnTriggerEnter(Collider other)
