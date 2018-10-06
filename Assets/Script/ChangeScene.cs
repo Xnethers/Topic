@@ -17,8 +17,6 @@ public class ChangeScene : MonoBehaviour
     public Image _block;
 
     [Header("連接到某場景")]
-    public string _scene;
-
     public float speed;
     bool have_audio = true;
 
@@ -28,11 +26,12 @@ public class ChangeScene : MonoBehaviour
     void Start()
     {
         //_block = GameObject.Find("Block").GetComponent<Image>();
+        /* 
         if (_scene != null)
         {
             next_scene = SceneManager.LoadSceneAsync(_scene);
             next_scene.allowSceneActivation = false;
-        }
+        }*/
     }
 
     void Update()

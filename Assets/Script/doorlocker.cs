@@ -29,7 +29,8 @@ public class doorlocker : MonoBehaviour
                 if (i == _key)
                 {
                     foreach (dooropen k in locker)
-                    { k.enabled = true; }
+                    { k.enabled = true; 
+                    _inventory.RemoveItem(i);}
                 }
             }
         }

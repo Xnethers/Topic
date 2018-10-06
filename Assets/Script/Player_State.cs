@@ -12,6 +12,7 @@ public class Player_State : MonoBehaviour
 
     public bool can_attack;
     public bool is_onstair;
+    public bool is_debuff;
 
     public Flowchart _flowchart;
 
@@ -21,6 +22,7 @@ public class Player_State : MonoBehaviour
     public static bool ishurt;
     public static bool canattack;
     public static bool isonstair;
+    public static bool isdebuff;
 
 
 
@@ -36,5 +38,11 @@ public class Player_State : MonoBehaviour
         is_lock = islock;
         is_hurt = ishurt;
         can_attack = canattack;
+        is_debuff=isdebuff;
+    }
+
+    void debuff_countdown()
+    {
+        
     }
 }

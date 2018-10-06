@@ -71,6 +71,7 @@ public abstract class SkillBasicData : MonoBehaviour
             //爆擊 =  最終傷害 * 角色爆擊傷害%
             CountDamage *= _ability.mCritDamage / 100;
         }
+        
         return (int)CountDamage;
     }
 

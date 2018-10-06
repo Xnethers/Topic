@@ -26,11 +26,14 @@ public class Inventory : MonoBehaviour
 	{
 		for (int i = 0; i < items.Count ; i++)
 		{
-            if (items[i] == itemToAdd)
+            if (items[i] == itemToAdd )
             {
-                itemCount += 1;
+				if( !itemToAdd.if_only)
+                {itemCount += 1;
                 counts[i].text = itemCount.ToString();
-                break;
+                break;}
+				else
+				{break;}
             }
 			else if (items[i] == null)
 			{

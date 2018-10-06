@@ -8,5 +8,6 @@ public class Item : ScriptableObject
     new public string name = "new Item";
     public int ID;
     public Sprite icon;
+    public bool if_only;
 
 }
