@@ -35,8 +35,8 @@ public class Fairy_guide : SkillBasicData
         {
             CostMP();
             _sword = Instantiate(sword, transform.position, transform.rotation);
-            GameObject tri = Instantiate(_trigger, transform);
-            Physics.IgnoreCollision(tri.GetComponent<Collider>(), _player.GetComponent<Collider>());
+            //GameObject tri = Instantiate(_trigger, transform);
+            //Physics.IgnoreCollision(tri.GetComponent<Collider>(), _player.GetComponent<Collider>());
             _sword.transform.SetParent(transform);
             StartCD(); isUse = false;
             //settle();

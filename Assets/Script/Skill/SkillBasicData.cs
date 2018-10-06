@@ -32,7 +32,7 @@ public abstract class SkillBasicData : MonoBehaviour
     private UI_Damage Damage_UI;
 
     protected GameObject _player;
-    private Player_Health HPMP ;
+    private Player_Health HPMP;
 
     void Awake()
     {
@@ -71,11 +71,14 @@ public abstract class SkillBasicData : MonoBehaviour
             //爆擊 =  最終傷害 * 角色爆擊傷害%
             CountDamage *= _ability.mCritDamage / 100;
         }
-        
+        else if (Player_State.isdebuff)
+        { CountDamage *= 0.7f; }
+
+
         return (int)CountDamage;
     }
 
-    public void show_damage(int damage , Vector3 _position)
+    public void show_damage(int damage, Vector3 _position)
     {
         GameObject mObject = (GameObject)Instantiate(PopupDamage, _position, Quaternion.identity);
         mObject.GetComponent<UI_Damage>().Value = (int)damage;
@@ -98,6 +101,5 @@ public abstract class SkillBasicData : MonoBehaviour
             }
         }
     }
-
 }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stun : MonoBehaviour {
 
-	public Player_State _state;
+	public float _duration;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class Stun : MonoBehaviour {
 	 {
 		 if (other.gameObject.tag == "Player")
 		 {
-			Player_State.isdebuff = true;
+			other.GetComponent<Player_State>().Stun(_duration);
 		 }
 	 }
 }

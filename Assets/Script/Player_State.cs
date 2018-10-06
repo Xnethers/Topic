@@ -38,11 +38,19 @@ public class Player_State : MonoBehaviour
         is_lock = islock;
         is_hurt = ishurt;
         can_attack = canattack;
-        is_debuff=isdebuff;
+        is_debuff = isdebuff;
     }
 
-    void debuff_countdown()
+    public void Stun(float dur)
     {
-        
+        isdebuff = true;
+        StartCoroutine(debuff_countdown(dur));
     }
+
+    IEnumerator debuff_countdown(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isdebuff = false;
+    }
+
 }
