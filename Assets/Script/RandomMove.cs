@@ -35,25 +35,21 @@ public class RandomMove : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * Speed);
             timer = timer + Time.deltaTime;
             if (timer > timemax)
-            {
-                is_state = 1;
-            }
+            { is_state = 1; }
+            //else if ()
         }
         else if (is_state == 1)
         {
             Rotation_To(TranslateValue + transform.position);
             if (Rotation_To(TranslateValue + transform.position) == true)
-            {
-                is_state = 2;
-            }
+            { is_state = 2; }
+            
         }
         else if (is_state == 2)
         {
             Reset();
             if (timer == 0)
-            {
-                is_state = 0;
-            }
+            { is_state = 0; }
         }
 
     }
@@ -63,7 +59,7 @@ public class RandomMove : MonoBehaviour
         timemax = Random.Range(RandMin, RandMax);
         timer = 0.0f;
     }
-    
+
     Vector3 targetposition;
     /*
     public void Move_WithOutRandom(Vector3 TargetPosition, float input_minrange)

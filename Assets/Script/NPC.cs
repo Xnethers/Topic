@@ -6,13 +6,10 @@ public class NPC : MonoBehaviour
 {
 
     public Flowchart _flowchart;
-
-    public string NPC_number;
-    private Transform _player;
     private bool hit = false;
     public int distance = 3;
 
-    private Outline _outline;
+    //private Outline _outline;
 
     public bool is_talk;
 
@@ -21,36 +18,41 @@ public class NPC : MonoBehaviour
     {
 
         _flowchart = GameObject.FindObjectOfType<Flowchart>();
-        _outline = GetComponent<Outline>();
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        //_outline = GetComponent<Outline>();
     }
 
     // Update is called once per frame
     void Update()
     {
         hit = Physics.CheckSphere(transform.position, distance, 1 << LayerMask.NameToLayer("Player"));
-        outline();
+        //outline(); 
         talk();
+        if (hit)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            { is_talk = true; }
+        }
     }
 
     void talk()
     {
         if (is_talk)
         {
+            string NPC_number = _flowchart.GetIntegerVariable("NPC").ToString();
             _flowchart.ExecuteBlock(NPC_number);
             is_talk = false;
         }
     }
-
-    void outline()
-    {
-        if (hit)
+    /* 
+        void outline()
         {
-            _outline.enabled = true;
-            if (Input.GetKeyDown(KeyCode.F))
-            { is_talk = true; }
-        }
-        else
-        { _outline.enabled = false; }
-    }
+            if (hit)
+            {
+                _outline.enabled = true;
+                if (Input.GetKeyDown(KeyCode.F))
+                { is_talk = true; }
+            }
+            else
+            { _outline.enabled = false; }
+        }*/
 }

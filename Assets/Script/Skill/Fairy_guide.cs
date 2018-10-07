@@ -45,7 +45,6 @@ public class Fairy_guide : SkillBasicData
         //播放動畫
         if (isAnimation)
         {
-
             ani_time -= Time.deltaTime;
             //DrawTool.Draw(Rectangle_p, true);
             if (ani_time <= 0)

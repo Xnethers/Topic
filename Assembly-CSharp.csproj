@@ -587,6 +587,7 @@
      <Compile Include="Assets\Script\Enemy\noisewave.cs" />
      <Compile Include="Assets\Script\Enemy\shock_wave.cs" />
      <Compile Include="Assets\Script\Enemy\sniper.cs" />
+     <Compile Include="Assets\Script\Enemy\summon.cs" />
      <Compile Include="Assets\Script\Enemy_Drop.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <Compile Include="Assets\Script\GameSaveXML.cs" />
@@ -603,6 +604,7 @@
      <Compile Include="Assets\Script\RandomMove.cs" />
      <Compile Include="Assets\Script\Search_Item.cs" />
      <Compile Include="Assets\Script\Skill\Amulet.cs" />
+     <Compile Include="Assets\Script\Skill\Destorysword.cs" />
      <Compile Include="Assets\Script\Skill\DrawTool.cs" />
      <Compile Include="Assets\Script\Skill\Fairy_guide.cs" />
      <Compile Include="Assets\Script\Skill\MagicField.cs" />

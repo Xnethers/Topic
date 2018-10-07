@@ -29,8 +29,11 @@ public class doorlocker : MonoBehaviour
                 if (i == _key)
                 {
                     foreach (dooropen k in locker)
-                    { k.enabled = true; 
-                    _inventory.RemoveItem(i);}
+                    {
+                        k.enabled = true;
+                        _inventory.RemoveItem(i);
+                        Destroy(this.gameObject);
+                    }
                 }
             }
         }
