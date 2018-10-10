@@ -16,6 +16,10 @@ public class NormalAttack : SkillBasicData
 
     private int ComboLenth = 3;
 
+    public List<GameObject> NA = new List<GameObject>();
+
+    public List<GameObject> UPNA = new List<GameObject>();
+
     // Use this for initialization
     void Start()
     {
@@ -26,24 +30,20 @@ public class NormalAttack : SkillBasicData
     void Update()
     {
 
-        if (Player_target._target != null)
-        {
-            CanUseSkill = true;
-            d = Vector3.Distance(transform.position, Player_target._target.position);
-        }
-        else
-        { CanUseSkill = false; }
+        //進入CD
+        CDing();
 
-        if (Input.GetMouseButtonDown(0))
+        if ( CanUseSkill)
         {
-            AddCombo();
-            int _d = CalculateDamege();
-            isUse = true;
-            if (isUse && CanUseSkill && d < _distance)
+            //show_damage(_d,Player_target._target.position);
+            if (Input.GetMouseButtonDown(0))
             {
-                Player_target._target.GetComponentInParent<Enemy_Health>()._health -= _d; //結算傷害
-                Player_target._target.GetComponentInParent<AI>().isHurt = true;//打擊動畫
-                //show_damage(_d,Player_target._target.position);
+                GameObject _na = (GameObject)Instantiate(NA[Combo], transform.position, transform.rotation);
+                if (this.level == 2)
+                { GameObject upna = (GameObject)Instantiate(UPNA[Combo], transform.position, transform.rotation); }
+                AddCombo();
+                int _d = CalculateDamege();
+                isUse = true;
             }
         }
 
@@ -80,6 +80,7 @@ public class NormalAttack : SkillBasicData
             if (ComboTime_Time > ComboTime)
             {
                 //Debug.Log("超出Combo時間,重製攻擊順序");
+                StartCD();
                 ResetCombo();
                 isComboTime = false;
             }
@@ -103,6 +104,7 @@ public class NormalAttack : SkillBasicData
     //重製攻擊段數
     void ResetCombo()
     {
+
         Combo = 0;
         Player_State.ismove = true;
     }

@@ -608,6 +608,7 @@
      <Compile Include="Assets\Script\Skill\DrawTool.cs" />
      <Compile Include="Assets\Script\Skill\Fairy_guide.cs" />
      <Compile Include="Assets\Script\Skill\MagicField.cs" />
+     <Compile Include="Assets\Script\Skill\NA_D.cs" />
      <Compile Include="Assets\Script\Skill\NormalAttack.cs" />
      <Compile Include="Assets\Script\Skill\SkillBasicData.cs" />
      <Compile Include="Assets\Script\Skill\Skill_CD.cs" />

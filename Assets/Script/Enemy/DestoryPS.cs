@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//推進物
+//推進物(Boss用)
 public class DestoryPS : MonoBehaviour
 {
 
