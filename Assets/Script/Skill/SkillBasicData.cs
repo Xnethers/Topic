@@ -11,7 +11,7 @@ public abstract class SkillBasicData : MonoBehaviour
 
     public GameObject PopupDamage;//傷害顯示
 
-    [Header("技能等級")]
+    [Header("技能等級"),Range(1,2),SerializeField]
     public int level;
 
     [Header("冷卻時間")]

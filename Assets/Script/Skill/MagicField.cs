@@ -40,7 +40,6 @@ public class MagicField : SkillBasicData
             CostMP();
             _particle.Play(true);
             targetColliders = hitColliders;
-            HitAnimatiom();
             settle();
             StartCD();
         }
@@ -58,16 +57,10 @@ public class MagicField : SkillBasicData
         int _d = CalculateDamege();
         for (i = 0; i < hitColliders.Length; i++)
         {
-            targetColliders[i].GetComponentInParent<Enemy_Health>()._health -= _d;
+            targetColliders[i].GetComponentInParent<AI>().Hurt(_d);
             //show_damage(_d, targetColliders[i].transform.position);
         }
         isUse = false;
-    }
-    void HitAnimatiom()//打擊感
-    {
-        int j;
-        for (j = 0; j < hitColliders.Length; j++)
-        { targetColliders[j].GetComponentInParent<AI>().isHurt = true; }
     }
 
     /// <summary>  

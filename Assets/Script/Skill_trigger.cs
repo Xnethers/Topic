@@ -10,7 +10,7 @@ public class Skill_trigger : MonoBehaviour
     public float _distance;
     public float _angle;
 
-    public bool isLock = false;
+    //public bool isLock = false;
 
     float deg;
     int n = 0;
@@ -22,17 +22,22 @@ public class Skill_trigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isLock == true)
-        { Player_target._target = hitColliders[n].transform; }
-        else
-        { Player_target._target = null; }
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (n == hitColliders.Length - 1)
-            { isLock = false; n = 0; }
+            if (Player_State.islock == true)
+            {
+                if (n == hitColliders.Length - 1)
+                { Player_State.islock = false; n = 0; }
+                else
+                { n++; }
+            }
+
             else
-            { n++; }
+            {
+                Player_target._target = hitColliders[n].transform;
+                Player_State.islock = true;
+            }
+
         }
     }
 
@@ -45,27 +50,28 @@ public class Skill_trigger : MonoBehaviour
     {
         hitColliders = Physics.OverlapSphere(transform.position, _distance, 1 << LayerMask.NameToLayer("Enemy"));
 
-        if (isLock == false)
+        if (Player_State.islock == false)
         {
             for (int k = 0; k < hitColliders.Length; k++)
             {
                 if (hitColliders[k] != null)
                     if (detection(hitColliders[k].transform.position))
                     {
-                        isLock = true;
                         Player_target._target = hitColliders[k].transform;
                         break;
                     }
             }
         }
 
-        if (isLock == true)
+        /*
+        if (Player_State.islock == true)
         {
             if (Player_target._target != null && Vector3.Distance(Player_target._target.position, transform.position) > _distance * 1.2)
-            { isLock = false; }
+            { Player_State.islock = false; }
             else if (Player_target._target != null && !detection(Player_target._target.position))
-            { isLock = false; }
+            { Player_State.islock = false; }
         }
+        */
 
     }
 

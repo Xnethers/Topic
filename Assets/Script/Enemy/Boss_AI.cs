@@ -26,6 +26,8 @@ public class Boss_AI : MonoBehaviour
     skill_list boss_skill;
     //public int _distance; //與玩家距離
 
+    public Animator _animator;
+
     public Enemy_Health boss_health;
     bool can_attack;
 
@@ -49,6 +51,7 @@ public class Boss_AI : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         boss_health = GetComponent<Enemy_Health>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -65,6 +68,18 @@ public class Boss_AI : MonoBehaviour
                 }
             case Boss_Statement.Attack:
                 {
+                    switch (boss_skill)
+                    {
+                        case skill_list.noisewave://音波
+                            { break; }
+                        case skill_list.sniper://月牙天沖
+                            { break; }
+                        case skill_list.shockwave://甩衝擊波下來-主角攻擊一定時間減弱（30% 5秒）
+                            { break; }
+                        case skill_list.summon://殘血大招：召喚小怪（3-4隻）
+                            { break; }
+
+                    }
                     break;
                 }
             case Boss_Statement.Dead:
@@ -75,6 +90,20 @@ public class Boss_AI : MonoBehaviour
 
 
 
+    }
+
+    void dead()
+    {
+        _animator.Play("M_die");
+        boss_health._health = 0;
+
+        if (boss_health._health == 0)
+        {
+            ParticleSystem _dieparticle = (ParticleSystem)Instantiate(boss_health.Die_particle, transform);
+            _dieparticle.Play();
+            Destroy(this.gameObject, boss_health.Die_time);
+            //Destroy(eHP._fall, eHP.Die_time);
+        }
     }
 
     void Movement(int d)
@@ -94,8 +123,8 @@ public class Boss_AI : MonoBehaviour
 
             case skill_list.noisewave:
                 {
-                    
-                        break;
+
+                    break;
                 }
             case skill_list.sniper:
                 {

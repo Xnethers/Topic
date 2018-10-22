@@ -30,18 +30,37 @@ public class Amulet : SkillBasicData
         //進入CD
         CDing();
 
-        if (Player_State.islock && Player_target._target != null)
-        { _target = Player_target._target; }
-
-
-        if (CanUseSkill && Input.GetKeyDown(KeyCode.Alpha1))
+        if (level == 1)
         {
-            StartCD();
-            _animator.Play("Amulet");
+            if (CanUseSkill && Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StartCD();
+
+                shotAmulet(1);
+            }
+        }
+
+        else if (level == 2)
+        {
+            if (CanUseSkill && Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                StartCD();
+                shotAmulet(3);
+            }
+        }
+    }
+
+    void shotAmulet(int i)
+    {
+        _animator.Play("Amulet");
+        for (int a = 1; a < i; a++)
+        {
             Rigidbody Amulet = (Rigidbody)Instantiate(AmuletSource, transform.position, transform.rotation);
             Amulet.velocity = transform.TransformDirection(Vector3.forward * Speed);
             Physics.IgnoreCollision(Amulet.GetComponent<Collider>(), transform.parent.parent.GetComponent<Collider>());
-            GetComponent<AudioSource>().PlayOneShot(ThrowerSound);
         }
+
+        
+        GetComponent<AudioSource>().PlayOneShot(ThrowerSound);
     }
 }

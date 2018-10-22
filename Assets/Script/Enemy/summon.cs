@@ -1,43 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class summon : SkillBasicData
 {
+    public GameObject creation;
+    public List<GameObject> creatlist = new List<GameObject>();
 
-    public GameObject _summoner1;
-    //public GameObject _summoner2;
-
-    [SerializeField,Range(1,10)]
-    private float maxrange;
-	[SerializeField,Range(1,10)]
-    private float minrange;
-	
-
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    [SerializeField, Range(1, 10)]
+    public float distance;
+    float mindistance = 1;
+    private Vector3 range;
+    private Vector3 next_position;
 
     // Update is called once per frame
     void Update()
     {
         //debug
         if (Input.GetKeyDown(KeyCode.V))
-        { UseSkill(); }
+        { UseSkill(); Creat();}
+        if (CanUseSkill && isUse && isAnimation)
+        {  StartCD(); }
 
-        if (CanUseSkill && isUse)
-        {
-            GameObject _summoner = Instantiate(_summoner1, transform.position + new Vector3(Random.onUnitSphere.x * Random.Range(minrange,maxrange), 0, Random.onUnitSphere.z * Random.Range(minrange,maxrange)), transform.rotation);
-            { StartCD(); isUse = false; }
-        }
         //進入CD
         CDing();
 
     }
 
+    /*
     public Vector3 get_position()
     {
         float X = transform.position.x + Random.Range(-10.0F, 10.0F);
@@ -48,5 +39,35 @@ public class summon : SkillBasicData
         //new Vector3的y座標為取得之地表高度再加0.5F，防止新物件掉落地表下
         Vector3 _destination = new Vector3(0, 0, 0);
         return _destination;
+    }
+    */
+
+    // Use this for initialization
+    void Start()
+    {
+        for (int i = 0; i < creatlist.Count; i++)
+        { creatlist[i] = creation; }
+    }
+
+    void Creat()
+    {
+        for (int j = 0; j < creatlist.Count; j++)
+        {
+            newposition(j);
+            GameObject c = Instantiate(creatlist[j], next_position, transform.rotation);
+        }
+    }
+
+    void newposition(int J)
+    {
+        if (J % 4 == 0)
+            range = new Vector3(Random.Range(mindistance, distance), 0, Random.Range(mindistance, distance));
+        else if (J % 4 == 1)
+            range = new Vector3(-Random.Range(mindistance, distance), 0, Random.Range(mindistance, distance));
+        else if (J % 4 == 2)
+            range = new Vector3(-Random.Range(mindistance, distance), 0, -Random.Range(mindistance, distance));
+        else if (J % 4 == 3)
+            range = new Vector3(Random.Range(mindistance, distance), 0, -Random.Range(mindistance, distance));
+        next_position = transform.position + range;
     }
 }

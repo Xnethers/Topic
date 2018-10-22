@@ -67,7 +67,7 @@ public class _PlayerMove : MonoBehaviour
             case MoveState.idle:
                 {
                     if (!Player_State.ismove)
-                    { }
+                    {                     }
                     if (Sprint())
                     {
                         if (Input.GetKeyDown(KeyCode.W) && i == 1)
@@ -78,7 +78,6 @@ public class _PlayerMove : MonoBehaviour
                         { MS = MoveState.isSprint; }
                         else if (Input.GetKeyDown(KeyCode.D) && i == 4)
                         { MS = MoveState.isSprint; }
-
                     }
                     else
                     {
@@ -178,6 +177,7 @@ public class _PlayerMove : MonoBehaviour
         else if (h < 0)
         { SmoothRotation(CameraD.eulerAngles.y - 90); }
 
+        //鎖定時角度修正
         if (Player_State.islock == true && Vertical == 0 && Horizontal == 0 && Player_target._target != null)
         { Rotation_To(Player_target._target.position); }
 

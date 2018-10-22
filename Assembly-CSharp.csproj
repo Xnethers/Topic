@@ -514,7 +514,6 @@
      <Compile Include="Assets\Fungus\Thirdparty\Usfxr\Scripts\SfxrParams.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\Usfxr\Scripts\SfxrSynth.cs" />
      <Compile Include="Assets\Fungus\Thirdparty\iTween\iTween.cs" />
-     <Compile Include="Assets\FungusExamples\FungusLua\Bindings\CustomScript.cs" />
      <Compile Include="Assets\Heureka\HeurekaShared\Extensions.cs" />
      <Compile Include="Assets\Heureka\HeurekaShared\Singleton.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
@@ -588,6 +587,7 @@
      <Compile Include="Assets\Script\Enemy\shock_wave.cs" />
      <Compile Include="Assets\Script\Enemy\sniper.cs" />
      <Compile Include="Assets\Script\Enemy\summon.cs" />
+     <Compile Include="Assets\Script\Enemy\summonsmoke.cs" />
      <Compile Include="Assets\Script\Enemy_Drop.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <Compile Include="Assets\Script\GameSaveXML.cs" />
@@ -649,7 +649,6 @@
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
      <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
-     <None Include="Assets\FungusExamples\FungusLua\Localization\stringtable.txt" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
      <None Include="Assets\Fungus\Docs\README.txt" />
@@ -672,15 +671,11 @@
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
      <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
-     <None Include="Assets\FungusExamples\FungusLua\Narrative\Resources\Lua\junglestory.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
-     <None Include="Assets\FungusExamples\Attribution.txt" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
-     <None Include="Assets\FungusExamples\TheFacility\Fonts\aleo\SIL Open Font License.txt" />
      <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\README.txt" />
-     <None Include="Assets\FungusExamples\Sherlock\Readme.txt" />
      <None Include="Assets\XWeaponTrail\readme.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
@@ -701,7 +696,6 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
-     <None Include="Assets\FungusExamples\FungusTown\Readme.txt" />
      <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
      <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\LICENSE.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />

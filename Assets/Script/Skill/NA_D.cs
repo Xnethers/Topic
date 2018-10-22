@@ -29,8 +29,7 @@ public class NA_D : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponentInParent<Enemy_Health>()._health -= _damage;
-            other.GetComponentInParent<AI>().isHurt = true;
+            other.GetComponentInParent<AI>().Hurt(_damage);
 			Debug.Log("hit");
             Destroy(gameObject);
         }

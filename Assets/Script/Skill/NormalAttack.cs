@@ -104,7 +104,6 @@ public class NormalAttack : SkillBasicData
     //重製攻擊段數
     void ResetCombo()
     {
-
         Combo = 0;
         Player_State.ismove = true;
     }

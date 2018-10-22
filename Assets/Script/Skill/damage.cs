@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*附加腳本時自動生成Animator元件*/
-[RequireComponent(typeof(Animator))]
 
 //投擲物
 public class damage : MonoBehaviour
@@ -44,8 +42,7 @@ public class damage : MonoBehaviour
         }
         else if (_type == ObjectType.amulet && other.tag == "Enemy")
         {
-            other.GetComponentInParent<Enemy_Health>()._health -= _damage;
-            other.GetComponentInParent<AI>().isHurt = true;
+            other.GetComponentInParent<AI>().Hurt(_damage);
             Destroy(gameObject);
         }
     }

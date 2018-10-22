@@ -7,7 +7,7 @@ public class Tirgger_Of_FlyingSword : MonoBehaviour
 {
 
     public float speed = 30.0f;
-    public float Damage = 10;
+    float _damage = 10;
 
     public float Skill_time = 1.0f;
 
@@ -20,18 +20,16 @@ public class Tirgger_Of_FlyingSword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 0, Time.deltaTime * speed);
+        //transform.Translate(0, 0, Time.deltaTime * speed);
         StartCoroutine(Timer(Skill_time));
+        _damage = Transform.FindObjectOfType<Fairy_guide>().CalculateDamege();
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<Enemy_Health>()._health -= Damage;
-            other.GetComponentInParent<AI>().isHurt = true;//打擊感
-        }
+        { other.gameObject.GetComponentInParent<AI>().Hurt(_damage); }
     }
 
     IEnumerator Timer(float time)

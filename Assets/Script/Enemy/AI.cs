@@ -18,7 +18,7 @@ public enum AIState
 public class AI : MonoBehaviour
 {
     public EnemyType _type;
-    public AIState Status = new AIState{};
+    public AIState Status = new AIState { };
 
     private RandomMove _randommove;
 
@@ -39,8 +39,7 @@ public class AI : MonoBehaviour
     public bool isHurt;
 
     private ParticleSystem Particle_hit;
-
-
+    private Enemy_Health eHP;
 
 
     // Use this for initialization
@@ -51,6 +50,7 @@ public class AI : MonoBehaviour
         _attack = GetComponent<Enemy_Attack>();
         _player = GameObject.FindWithTag("Player").transform;
         Particle_hit = GetComponentInChildren<ParticleSystem>();
+        eHP = GetComponent<Enemy_Health>();
     }
 
     // Update is called once per frame
@@ -58,6 +58,8 @@ public class AI : MonoBehaviour
     {
         Animation();
         Lineofsight();
+        if (eHP._health <= 0)
+        {dead();}
         distance = Vector3.Distance(_player.position, transform.position);
 
         switch (_type)
@@ -194,12 +196,27 @@ public class AI : MonoBehaviour
                 }
                 break;
         }
+    }
 
-        if (isHurt)
+    public void Hurt(float d)
+    {
+        eHP._health -= d;
+        _animator.Play("M_hurt");
+        Particle_hit.Play(true);
+        isHurt = false;
+    }
+
+    void dead()
+    {
+        _animator.Play("M_die");
+        eHP._health = 0;
+
+        if (eHP._health == 0)
         {
-            _animator.Play("M_hurt");
-            Particle_hit.Play(true);
-            isHurt = false;
+            ParticleSystem _dieparticle = (ParticleSystem)Instantiate(eHP.Die_particle, transform);
+            _dieparticle.Play();
+            Destroy(this.gameObject, eHP.Die_time);
+            //Destroy(eHP._fall, eHP.Die_time);
         }
     }
 
@@ -209,10 +226,10 @@ public class AI : MonoBehaviour
         Vector3 _direction = _player.position - transform.position;
         if (Physics.Raycast(transform.position, _direction, out hit))
         {
-            if (hit.collider.tag == "Player" )
+            if (hit.collider.tag == "Player")
             { sight = true; }
-            else if(hit.collider.tag == "NPC" )
-            { sight = true;}
+            else if (hit.collider.tag == "NPC")
+            { sight = true; }
             else
             { sight = false; }
         }
