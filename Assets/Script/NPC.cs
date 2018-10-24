@@ -24,9 +24,7 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hit = Physics.CheckSphere(transform.position, distance, 1 << LayerMask.NameToLayer("Player"));
-        //outline(); 
-        talk();
+
         if (hit)
         {
             if (Input.GetKeyDown(KeyCode.F))
@@ -34,15 +32,7 @@ public class NPC : MonoBehaviour
         }
     }
 
-    void talk()
-    {
-        if (is_talk)
-        {
-            string NPC_number = _flowchart.GetIntegerVariable("NPC").ToString();
-            _flowchart.ExecuteBlock(NPC_number);
-            is_talk = false;
-        }
-    }
+    
     /* 
         void outline()
         {
