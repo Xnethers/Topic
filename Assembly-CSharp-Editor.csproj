@@ -46,6 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FogVolume\Scripts\Editor\FogVolumeDataEditor.cs" />
+     <Compile Include="Assets\FogVolume\Scripts\Editor\FogVolumeDirectionalLightEditor.cs" />
+     <Compile Include="Assets\FogVolume\Scripts\Editor\FogVolumeEditor.cs" />
+     <Compile Include="Assets\FogVolume\Scripts\Editor\FogVolumeLightEditor.cs" />
+     <Compile Include="Assets\FogVolume\Scripts\Editor\FogVolumeRendererEditor.cs" />
+     <Compile Include="Assets\FogVolume\Scripts\Editor\FogVolumeScreenEditor.cs" />
      <Compile Include="Assets\Fungus\Scripts\Editor\AssetModProcessor.cs" />
      <Compile Include="Assets\Fungus\Scripts\Editor\BlockEditor.cs" />
      <Compile Include="Assets\Fungus\Scripts\Editor\BlockInspector.cs" />
@@ -342,20 +348,26 @@
      <Compile Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeMaterialInspector.cs" />
      <Compile Include="Assets\XWeaponTrail\Editor\XWeaponTrailEditor.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
+     <None Include="Assets\FogVolume\Resources\Depth.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_EXP.shader" />
      <None Include="Assets\Heureka\AssetHunter\Editor\Settings\ScriptableObjectsFolder.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Trunc\SFN_Trunc.shader" />
+     <None Include="Assets\FogVolume\Resources\SpeedTreeVertexDepth.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC1.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RemapRange\SFN_RemapRange.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_ShadowDepth.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Matrix4x4\SFN_Matrix4x4.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG2.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp01\SFN_Clamp01.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_SPD_ANG.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Screen.shader" />
+     <None Include="Assets\FogVolume\ShaderReplacements\SpeedTree.shader" />
      <None Include="Assets\Shader Forge\TesterManual.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RemapRangeAdvanced\SFN_RemapRangeAdvanced.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\_CameraDepthTexture.shader" />
+     <None Include="Assets\FogVolume\Resources\FogVolumeDirectionalLight.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_ColorBurn.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ExtractChannel.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleMultiplicative.shader" />
@@ -372,8 +384,11 @@
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG.shader" />
+     <None Include="Assets\FogVolume\Resources\ShadowPostprocess.shader" />
      <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_OpacityBlur.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Transpose\SFN_Transpose.shader" />
+     <None Include="Assets\FogVolume\Resources\FogVolumeDensityFilter.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RgbToHsv\SFN_RgbToHsv.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC3.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_REF.shader" />
@@ -386,6 +401,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG10.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC2.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
+     <None Include="Assets\FogVolume\README.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VertexColor\SFN_VertexColor.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Lighten.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Matrix4x4Property\SFN_Matrix4x4Property.shader" />
@@ -398,6 +414,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Subtract\SFN_Subtract.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleAlphaBlended.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_DEP.shader" />
+     <None Include="Assets\FogVolume\Resources\Primitive.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcCos\SFN_ArcCos.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_NEG.shader" />
@@ -427,6 +444,7 @@
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
      <None Include="Assets\Fungus\Fonts\Exo2\OFL.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
+     <None Include="Assets\FogVolume\Resources\Upsample.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Shaders\Vegetation.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_DEP_REF.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_If\SFN_If.shader" />
@@ -437,11 +455,14 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
      <None Include="Assets\Fungus\Scripts\link.xml" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+     <None Include="Assets\FogVolume\Resources\DepthMapQuad.shader" />
      <None Include="Assets\Heureka\AssetHunter\Readme.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VectorRejection\SFN_VectorRejection.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\Shader Presets\PresetParticleAdditive.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\FogVolumeTextured.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_DDXY\SFN_DDXY.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_PixelSize\SFN_PixelSize.shader" />
+     <None Include="Assets\FogVolume\Resources\Blur.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Multiply\SFN_Multiply_5.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ViewPosition\SFN_ViewPosition.shader" />
@@ -450,6 +471,7 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Floor\SFN_Floor.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_Opaque.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Power\SFN_Power.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Multiply\SFN_Multiply_2.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Distance\SFN_Distance.shader" />
@@ -489,6 +511,7 @@
      <None Include="Assets\XWeaponTrail\readme.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_HardMix.shader" />
+     <None Include="Assets\FogVolume\Scripts\Other\TAA\Shaders\TemporalReprojection.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcTan2\SFN_ArcTan2_ZTO.shader" />
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_REQONLY.shader" />
@@ -499,6 +522,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Shaders\LightWrapping.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\Shader Presets\PresetPostEffect.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Normalize\SFN_Normalize.shader" />
+     <None Include="Assets\FogVolume\Resources\FogVolumeFragment.cginc" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcTan2\SFN_ArcTan2_NPTP.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Append\SFN_Append.shader" />
@@ -514,6 +538,8 @@
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_STD.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Tex2d\SFN_Tex2d_NoInputs.shader" />
+     <None Include="Assets\FogVolume\Scripts\Other\TAA\Shaders\IncNoise.cginc" />
+     <None Include="Assets\FogVolume\Resources\FogVolume.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_DDY\SFN_DDY.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_4.shader" />
@@ -526,15 +552,20 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Multiply.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VectorProjection\SFN_VectorProjection.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
+     <None Include="Assets\FogVolume\Scripts\Other\TAA\Shaders\IncDepth.cginc" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_DepthR.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ViewVector\SFN_ViewVector.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_LinearDodge.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Smoothstep\SFN_Smoothstep.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Reflect\SFN_Reflect.shader" />
      <None Include="Assets\Fungus\Integrations\Spine\Readme.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Time\SFN_Time.shader" />
+     <None Include="Assets\FogVolume\Scripts\Other\TAA\_LICENSE.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_2.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Shaders\VertexColorRounding.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_FogVolumeConvolution.shader" />
+     <None Include="Assets\FogVolume\Resources\Shadow Projector.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_PinLight.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_SwitchProperty\SFN_SwitchProperty.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_FogColor\SFN_FogColor.shader" />
@@ -567,7 +598,10 @@
      <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\LICENSE.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectScale\SFN_ObjectScale_Reciprocal.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
+     <None Include="Assets\FogVolume\Resources\SpeedTreeCommonDepth.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_5.shader" />
+     <None Include="Assets\FogVolume\Resources\Surrogate.shader" />
+     <None Include="Assets\FogVolume\Resources\FogVolumeBloom.shader" />
      <None Include="Assets\Fungus\Textures\Attribution.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Tex2dAsset\SFN_Tex2dAsset.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Sin\SFN_Sin.shader" />
@@ -575,11 +609,15 @@
      <None Include="Assets\Shader Forge\ProjectSettings\ProjectVersion.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Shaders\PixelRotator.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Shaders\CustomLighting.shader" />
+     <None Include="Assets\FogVolume\Scenes\Skies\Skybox-Procedural.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
+     <None Include="Assets\FogVolume\Resources\FogVolumeCommon.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
+     <None Include="Assets\FogVolume\Resources\CommonInputs.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_4.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_3.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_Depth.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_NormalBlend\SFN_NormalBlend.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
      <None Include="Assets\Fungus\Thirdparty\FungusLua\Resources\Lua\inspect.txt" />
@@ -587,6 +625,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC4.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_NRM.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_ANG.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\FogVolumeTexturedR.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ConstantClamp\SFN_ConstantClamp.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
      <None Include="Assets\DynamicBone\ReadMe.txt" />
@@ -594,6 +633,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Subtract.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightAttenuation\SFN_LightAttenuation.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_MultiplyMatrix\SFN_MultiplyMatrix.shader" />
+     <None Include="Assets\FogVolume\Scripts\Other\TAA\Shaders\VelocityBuffer.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Exclusion.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_LinearBurn.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_DepthBlend\SFN_DepthBlend.shader" />
@@ -605,6 +645,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_5.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_LinearLight.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_HardLight.shader" />
+     <None Include="Assets\FogVolume\Scenes\RT Viewer\RT_Opacity.shader" />
      <None Include="Assets\Fungus\Docs\CHANGELOG.txt" />
      <None Include="Assets\Fungus\Thirdparty\Reorderable List Field\Editor\Editor.ReorderableList.xml" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Desaturate\SFN_Desaturate_REQONLY.shader" />

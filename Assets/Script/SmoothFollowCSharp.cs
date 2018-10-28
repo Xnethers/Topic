@@ -104,7 +104,7 @@ public class SmoothFollowCSharp : MonoBehaviour
         {
             if (hit.collider.tag == "Wall")
             {
-                h = hit.distance;
+                h = hit.distance/2;
                 Rhit = true;
             }
         }
