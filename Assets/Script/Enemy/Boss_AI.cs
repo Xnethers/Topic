@@ -8,6 +8,7 @@ public class Boss_AI : MonoBehaviour
     {
         Move,
         Attack,
+        Fly,
         Dead
     }
 
@@ -82,6 +83,11 @@ public class Boss_AI : MonoBehaviour
                     }
                     break;
                 }
+            case Boss_Statement.Fly:
+                {
+                transfor
+                    break;
+                }
             case Boss_Statement.Dead:
                 {
                     break;
@@ -94,7 +100,6 @@ public class Boss_AI : MonoBehaviour
 
     void dead()
     {
-        _animator.Play("M_die");
         boss_health._health = 0;
 
         if (boss_health._health == 0)
