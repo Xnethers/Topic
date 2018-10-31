@@ -19,9 +19,9 @@ public class summon : SkillBasicData
     {
         //debug
         if (Input.GetKeyDown(KeyCode.V))
-        { UseSkill(); Creat();}
+        { UseSkill(); }
         if (CanUseSkill && isUse && isAnimation)
-        {  StartCD(); }
+        { StartCD(); Creat();isUse = false; }
 
         //進入CD
         CDing();
@@ -57,6 +57,9 @@ public class summon : SkillBasicData
             GameObject c = Instantiate(creatlist[j], next_position, transform.rotation);
         }
     }
+
+    public void use()
+    { UseSkill(); Creat(); }
 
     void newposition(int J)
     {

@@ -44,7 +44,7 @@ public class sniper : SkillBasicData
 
     }
 
-    void Sniper()
+    public void use()
     {
         UseSkill();
     }

@@ -6,7 +6,7 @@ public class shock_wave : SkillBasicData
 {
 
     public GameObject _noisewave;//宣告投射物
-    public Transform Point;//宣告複製原點
+     private Vector3 Point;//宣告複製原點
     //public float Passtime = 0;//宣告經過時間
     public float interval = 0.25f;//宣告子彈間隔時間
 
@@ -17,7 +17,7 @@ public class shock_wave : SkillBasicData
     // Use this for initialization
     void Start()
     {
-        Point = this.transform;
+        Point = this.transform.position;
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class shock_wave : SkillBasicData
         {
             if (shot && i < count)
             {
-                GameObject bullet = Instantiate(_noisewave, Point);
+                GameObject bullet = Instantiate(_noisewave, Point, transform.rotation);
                 i++;
                 StartCoroutine(timer());
             }
@@ -44,7 +44,7 @@ public class shock_wave : SkillBasicData
 
     }
 
-    void Shock_wave()
+    public void use()
     {
         UseSkill();
     }

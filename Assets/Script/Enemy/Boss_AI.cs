@@ -6,12 +6,15 @@ public class Boss_AI : MonoBehaviour
 {
     public enum Boss_Statement
     {
+        Idle,
         Move,
         Attack,
+        Fly,
         Dead
     }
 
-    enum skill_list
+
+    public enum skill_list
     {
         noisewave,//音波
         sniper,//月牙天沖
@@ -21,9 +24,9 @@ public class Boss_AI : MonoBehaviour
 
     public Boss_Statement boss_Statement;//Boss當前狀態
 
-    public GameObject _player;
+    [SerializeField] skill_list boss_skill;
+    [SerializeField] GameObject _player;
 
-    skill_list boss_skill;
     //public int _distance; //與玩家距離
 
     public Animator _animator;
@@ -31,17 +34,18 @@ public class Boss_AI : MonoBehaviour
     public Enemy_Health boss_health;
     bool can_attack;
 
-    [Header("技能1")]
+    [SerializeField]
+    int _delaytime;
+    [SerializeField]
+    int flyhight = 5;
+    [SerializeField]
+    bool is_fly;
 
-    public int distance_1;
-
-    [Header("技能2")]
-
-    public int distance_2;
-
-    [Header("技能3")]
-
-    public int distance_3;
+    //技能
+    noisewave _noisewave;
+    summon _summon;
+    shock_wave _shockwave;
+    sniper _sniper;
 
 
 
@@ -52,6 +56,11 @@ public class Boss_AI : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         boss_health = GetComponent<Enemy_Health>();
         _animator = GetComponentInChildren<Animator>();
+        //技能
+        _noisewave = GetComponentInChildren<noisewave>();
+        _summon = GetComponentInChildren<summon>();
+        _shockwave = GetComponentInChildren<shock_wave>();
+        _sniper = GetComponentInChildren<sniper>();
     }
 
     // Update is called once per frame
@@ -71,26 +80,51 @@ public class Boss_AI : MonoBehaviour
                     switch (boss_skill)
                     {
                         case skill_list.noisewave://音波
-                            { break; }
+                            {
+                               StartCoroutine(useskill(_noisewave, skill_list.sniper));
+                                break;
+                            }
                         case skill_list.sniper://月牙天沖
-                            { break; }
+                            {
+                                StartCoroutine(useskill(_sniper, skill_list.shockwave));
+                                break;
+                            }
                         case skill_list.shockwave://甩衝擊波下來-主角攻擊一定時間減弱（30% 5秒）
-                            { break; }
+                            {
+                                //useskill(_shockwave, skill_list.shockwave);
+                                StartCoroutine(flyanition(_delaytime));
+                                boss_Statement = Boss_Statement.Fly;
+                                break;
+                            }
                         case skill_list.summon://殘血大招：召喚小怪（3-4隻）
-                            { break; }
+                            {
+                                StartCoroutine(useskill(_summon, skill_list.shockwave));
+                                useskill(_summon, skill_list.shockwave);
+                                break;
+                            }
 
                     }
                     break;
                 }
-            case Boss_Statement.Dead:
+            case Boss_Statement.Fly:
                 {
                     break;
                 }
+            case Boss_Statement.Dead:
+                {
+                    dead();
+                    break;
+                }
         }
-
-
-
     }
+    /*
+    if(boss_skill == skill_list.noisewave)
+    {
+     _noisewave.useNoisewave();
+     delay(5s)
+     boss_skill = skill_list.sniper;
+    }
+     */
 
     void dead()
     {
@@ -115,36 +149,35 @@ public class Boss_AI : MonoBehaviour
         { }
     }
 
-    void Attack()
+    IEnumerator useskill(SkillBasicData skill, skill_list next)
     {
-        float b_p_d = Vector3.Distance(transform.position, _player.transform.position);
-        switch (boss_skill)
-        {
+        skill.UseSkill();
+        yield return new WaitForSeconds(_delaytime);
+        boss_skill = next;
+    }
 
-            case skill_list.noisewave:
-                {
-
-                    break;
-                }
-            case skill_list.sniper:
-                {
-                    break;
-                }
-            case skill_list.shockwave:
-                {
-                    break;
-                }
-            case skill_list.summon:
-                {
-                    break;
-                }
-
-        }
+    IEnumerator delay(float delaytime)
+    {
+        yield return new WaitForSeconds(delaytime);
 
     }
 
-    void Dead()
-    { }
-
+    IEnumerator flyanition(float delaytime)
+    {
+        if (is_fly)
+        {
+            Vector3 flyposition = transform.position - new Vector3(0, flyhight, 0);
+            transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+        }
+        else
+        {
+            Vector3 flyposition = transform.position + new Vector3(0, flyhight, 0);
+            transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+        }
+        _shockwave.UseSkill();
+        yield return new WaitForSeconds(delaytime);
+        is_fly = !is_fly;
+        boss_Statement = Boss_Statement.Fly;
+    }
 
 }

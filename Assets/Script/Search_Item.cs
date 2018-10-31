@@ -30,8 +30,8 @@ public class Search_Item : MonoBehaviour
 
         npc = Physics.OverlapSphere(transform.position, distance, 1 << LayerMask.NameToLayer("NPC"));
 
-        Debug.Log("CanSearchItem = " + CanSearchItem());
-        Debug.Log("CanTalktoNPC = " + CanTalktoNPC());
+        //Debug.Log("CanSearchItem = " + CanSearchItem());
+        //Debug.Log("CanTalktoNPC = " + CanTalktoNPC());
 
         if (hit.Length > 1)
         { Debug.Log("object overlapping"); }
