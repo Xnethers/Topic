@@ -11,7 +11,7 @@ public abstract class SkillBasicData : MonoBehaviour
 
     public GameObject PopupDamage;//傷害顯示
 
-    [Header("技能等級"),Range(1,2),SerializeField]
+    [Header("技能等級"), Range(1, 2), SerializeField]
     public int level;
 
     [Header("冷卻時間")]
@@ -37,7 +37,7 @@ public abstract class SkillBasicData : MonoBehaviour
     void Awake()
     {
         NowCD = 0;
-        _player = GameObject.FindWithTag("Player");
+        _player = this.transform.parent.parent.gameObject;
         _move = _player.GetComponent<_PlayerMove>();
         _animator = _player.GetComponentInChildren<Animator>();
         _ability = _player.GetComponentInChildren<Abilityvalue>();

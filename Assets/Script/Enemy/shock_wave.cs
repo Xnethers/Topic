@@ -30,6 +30,7 @@ public class shock_wave : SkillBasicData
 
         if (CanUseSkill && isUse)
         {
+            _animator.Play("shock_wave");
             if (shot && i < count)
             {
                 GameObject bullet = Instantiate(_noisewave, Point, transform.rotation);

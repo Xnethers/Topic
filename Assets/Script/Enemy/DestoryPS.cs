@@ -18,7 +18,7 @@ public class DestoryPS : MonoBehaviour
     public Vector3 maxscale = new Vector3(3, 0.3f, 3);
     void Start()
     {
-        ps = this.GetComponent<ParticleSystem>();//取得粒子
+        ps = this.GetComponentInChildren<ParticleSystem>();//取得粒子
         _collision = this.GetComponent<BoxCollider>();
 
     }

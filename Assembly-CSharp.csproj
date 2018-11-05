@@ -613,6 +613,7 @@
      <Compile Include="Assets\Script\Enemy\Stun.cs" />
      <Compile Include="Assets\Script\Enemy\Track.cs" />
      <Compile Include="Assets\Script\Enemy\noisewave.cs" />
+     <Compile Include="Assets\Script\Enemy\noisewaveShoter.cs" />
      <Compile Include="Assets\Script\Enemy\shock_wave.cs" />
      <Compile Include="Assets\Script\Enemy\sniper.cs" />
      <Compile Include="Assets\Script\Enemy\summon.cs" />

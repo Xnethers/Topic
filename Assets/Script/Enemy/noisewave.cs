@@ -5,18 +5,14 @@ using UnityEngine;
 public class noisewave : SkillBasicData
 {
     public GameObject _noisewave;//宣告投射物
-    private Vector3 Point;//宣告複製原點
-    //public float Passtime = 0;//宣告經過時間
-    [SerializeField] private float interval = 0.25f;//宣告子彈間隔時間
+    [SerializeField] private noisewaveShoter[] Point;//宣告複製原點
+    [SerializeField] float delaytime;
 
-    [SerializeField] bool shot = true;
-    public int count = 0; //子彈數
-    int i = 0;
 
     // Use this for initialization
     void Start()
     {
-        Point = this.transform.position;
+
     }
 
     // Update is called once per frame
@@ -24,35 +20,36 @@ public class noisewave : SkillBasicData
     {
         //Debug
         if (Input.GetKeyDown(KeyCode.M))
-        { UseSkill(); shot = true; }
+        { UseSkill(); }
 
         if (CanUseSkill && isUse)
         {
-            if (shot && i < count)
-            {
-                GameObject bullet = Instantiate(_noisewave, Point, transform.rotation);
-                i++;
-                StartCoroutine(timer());
-            }
-            if (i == count)
-            { StartCD(); isUse = false; i = 0; }
+            _animator.Play("noisewave");
+            StartCoroutine("delay");
         }
         //進入CD
         CDing();
+    }
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(delaytime);
+        StartCoroutine("creatparticle");
+        StopCoroutine("delay");
+    }
 
+    IEnumerator creatparticle()
+    {
+        foreach (noisewaveShoter i in Point)
+        {
+            i.shot = true;
+            StartCD();
+            isUse = false;
+        }
+        yield return null;
     }
 
     public void use()
     {
         UseSkill();
     }
-
-    IEnumerator timer()
-    {
-        shot = false;
-        yield return new WaitForSeconds(interval);
-        shot = true;
-    }
-
-
 }

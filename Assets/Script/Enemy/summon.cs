@@ -21,7 +21,12 @@ public class summon : SkillBasicData
         if (Input.GetKeyDown(KeyCode.V))
         { UseSkill(); }
         if (CanUseSkill && isUse && isAnimation)
-        { StartCD(); Creat();isUse = false; }
+        {
+            StartCD();
+            Creat();
+            _animator.SetBool("summon", true); ;
+            isUse = false;
+        }
 
         //進入CD
         CDing();
@@ -51,11 +56,16 @@ public class summon : SkillBasicData
 
     void Creat()
     {
+        
         for (int j = 0; j < creatlist.Count; j++)
         {
+            if(j == 0)
+            {_animator.Play("summon");}
             newposition(j);
             GameObject c = Instantiate(creatlist[j], next_position, transform.rotation);
         }
+
+
     }
 
     public void use()
