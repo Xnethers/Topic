@@ -629,6 +629,7 @@
      <Compile Include="Assets\Script\Item\Item.cs" />
      <Compile Include="Assets\Script\Item\ItemPickup.cs" />
      <Compile Include="Assets\Script\Item\RotateMyself.cs" />
+     <Compile Include="Assets\Script\Map.cs" />
      <Compile Include="Assets\Script\NPC.cs" />
      <Compile Include="Assets\Script\Player_Animator.cs" />
      <Compile Include="Assets\Script\Player_Health.cs" />

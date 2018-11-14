@@ -133,7 +133,7 @@ public class Boss_AI : MonoBehaviour
         {
             if (boss_Statement == Boss_Statement.IsFly)
             {
-                /* 
+                
                 switch (k)
                 {
                     case 1:
@@ -148,7 +148,7 @@ public class Boss_AI : MonoBehaviour
                         { yield return new WaitForSeconds(3); boss_Statement = Boss_Statement.Move; k = 0; }
                         break;
                 }
-                */
+
                 /*
                 _sniper.UseSkill();
                 yield return new WaitForSeconds(8);
@@ -174,6 +174,7 @@ public class Boss_AI : MonoBehaviour
 
             if (boss_Statement == Boss_Statement.Isground)
             {
+                
                 switch (k)
                 {
                     case 1:
@@ -201,6 +202,7 @@ public class Boss_AI : MonoBehaviour
                         break;
 
                 }
+                
                 /*
                 _shockwave.UseSkill();
                 yield return new WaitForSeconds(3);
@@ -224,6 +226,7 @@ public class Boss_AI : MonoBehaviour
             }
         }
     }
+
     IEnumerator flyanition()
     {
         if (boss_Statement == Boss_Statement.Move)
@@ -243,18 +246,16 @@ public class Boss_AI : MonoBehaviour
             is_fly = !is_fly;
             _animator.SetBool("isfly", false);
             yield return null;
-            if (!is_fly)
-            { boss_Statement = Boss_Statement.Isground; }
-            else
-            { boss_Statement = Boss_Statement.IsFly; }
-            yield break;
         }
         else
         {
             StopCoroutine(a);
+            if (!is_fly)
+            { boss_Statement = Boss_Statement.Isground; }
+            else
+            { boss_Statement = Boss_Statement.IsFly; }
             yield return null;
         }
-
 
     }
 }
