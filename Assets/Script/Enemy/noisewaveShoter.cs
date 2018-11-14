@@ -17,7 +17,7 @@ public class noisewaveShoter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Point = this.transform.position;
+        //Point = this.transform.position;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class noisewaveShoter : MonoBehaviour
     {
         if (shot && i < count)
         {
-            GameObject bullet = Instantiate(_noisewave, Point, transform.rotation);
+            GameObject bullet = Instantiate(_noisewave, transform.position, transform.rotation);
             i++;
             if (i == count)
             { i = 0; shot = false;}

@@ -46,7 +46,6 @@ public class MagicField : SkillBasicData
         if (isAnimation)
         {
             DrawTool.EndDraw(Rectangle_p, false);
-            isUse = false;
             isAnimation = false;
         }
     }

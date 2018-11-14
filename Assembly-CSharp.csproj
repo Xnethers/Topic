@@ -612,6 +612,8 @@
      <Compile Include="Assets\Script\Enemy\Strike.cs" />
      <Compile Include="Assets\Script\Enemy\Stun.cs" />
      <Compile Include="Assets\Script\Enemy\Track.cs" />
+     <Compile Include="Assets\Script\Enemy\blood_blade.cs" />
+     <Compile Include="Assets\Script\Enemy\claw.cs" />
      <Compile Include="Assets\Script\Enemy\noisewave.cs" />
      <Compile Include="Assets\Script\Enemy\noisewaveShoter.cs" />
      <Compile Include="Assets\Script\Enemy\shock_wave.cs" />
@@ -673,6 +675,7 @@
      <Compile Include="Assets\XWeaponTrail\Scripts\VertexPool.cs" />
      <Compile Include="Assets\XWeaponTrail\Scripts\XWeaponTrail.cs" />
      <Compile Include="Assets\XWeaponTrail\Scripts\XWeaponTrailDemo.cs" />
+     <Compile Include="Assets\status_sniper.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\FogVolume\Resources\Depth.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
@@ -753,6 +756,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Readme.txt" />
      <None Include="Assets\QuickOutline\Readme.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_FragmentPosition\SFN_FragmentPosition.shader" />
+     <None Include="Assets\Model\Materials\character\NewSurfaceShader.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Abs\SFN_Abs.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_ColorDodge.shader" />

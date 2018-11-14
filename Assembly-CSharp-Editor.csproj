@@ -427,6 +427,7 @@
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Readme.txt" />
      <None Include="Assets\QuickOutline\Readme.txt" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_FragmentPosition\SFN_FragmentPosition.shader" />
+     <None Include="Assets\Model\Materials\character\NewSurfaceShader.shader" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Abs\SFN_Abs.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
      <None Include="Assets\Shader Forge\Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_ColorDodge.shader" />

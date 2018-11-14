@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: b07db7452ffe1c04b99fc0011adbce80
-timeCreated: 1541433098
+guid: 6c4706bacc565014c897c8ef1eb8557e
+timeCreated: 1541560793
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Ao
+    100000: Ao
+    100002: //RootNode
     100004: Bip001
     100006: Bip001 Footsteps
     100008: Bip001 Head
@@ -76,8 +76,8 @@ ModelImporter:
     100136: Bone017
     100138: Bone018
     100140: Bone019
-    400000: //RootNode
-    400002: Ao
+    400000: Ao
+    400002: //RootNode
     400004: Bip001
     400006: Bip001 Footsteps
     400008: Bip001 Head
@@ -148,7 +148,9 @@ ModelImporter:
     400138: Bone018
     400140: Bone019
     4300000: Ao
+    7400000: Take 001
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Ao
   materials:
     importMaterials: 0
@@ -166,7 +168,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -179,7 +181,7 @@ ModelImporter:
     globalScale: 0.1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -195,7 +197,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -210,8 +212,8 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
-    hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasTranslationDoF: 1
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

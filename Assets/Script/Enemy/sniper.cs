@@ -12,10 +12,11 @@ public class sniper : SkillBasicData
 
     [SerializeField] bool shot;
     public int count = 0; //子彈數
-    [SerializeField]private int angle;//攻擊角度
+    [SerializeField] private int angle;//攻擊角度
     int i = 0;
 
     float Q = 0;
+
 
     Quaternion rotation;
 
@@ -36,32 +37,25 @@ public class sniper : SkillBasicData
 
         if (CanUseSkill && isUse)
         {
-            _animator.Play("sniper");
+           _animator.Play("sniper");
             if (shot && i < count)
             {
                 rotation = Quaternion.Euler(0, Q, 0);
-                GameObject bullet = Instantiate(P_sniper, Point.position, transform.rotation * rotation);
+                GameObject bullet = Instantiate(P_sniper, transform.position, transform.rotation * rotation);
                 i++;
                 if (i != count)
                     StartCoroutine(timer());
                 else
                 {
                     StartCD();
-                    isUse = false;
                     i = 0;
-                    Q = -angle / 2;;
+                    Q = -angle / 2; ;
                     isAnimation = false;
                 }
             }
         }
         //進入CD
         CDing();
-
-    }
-
-    public void use()
-    {
-        UseSkill();
     }
 
     IEnumerator timer()
@@ -69,7 +63,6 @@ public class sniper : SkillBasicData
         shot = false;
         yield return new WaitForSeconds(interval);
         shot = true;
-        Q += angle/4;
-
+        Q += angle / 4;
     }
 }

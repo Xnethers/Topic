@@ -7,15 +7,15 @@ public class _PlayerMove : MonoBehaviour
     public AudioClip walksound;
     private Transform mainCameraT;
     private Transform CameraD;
-    public CharacterController _player;
+    private CharacterController _player;
     public Transform _groundChecker;
-    public LayerMask Ground;
-    public float GroundDistance = 0.2f;
-    public float speed = 3.0f;
-    public float JumpHeight = 2;
+    [SerializeField] private LayerMask Ground;
+    [SerializeField] private float GroundDistance = 0.2f;
+    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float JumpHeight = 2;
     public Vector3 _velocity;
 
-    public float Sprint_speed = 30;
+    [SerializeField] private float Sprint_speed = 30;
     private AudioSource _audiosource;
 
     public enum MoveState
@@ -44,6 +44,7 @@ public class _PlayerMove : MonoBehaviour
         CameraD_object.name = "Direction";
         CameraD = CameraD_object.transform;
         _playerState = transform.GetComponent<Player_State>();
+        _player = GetComponent<CharacterController>();
         _audiosource = GetComponent<AudioSource>();
         StartCoroutine(FootSound());
     }
@@ -67,7 +68,7 @@ public class _PlayerMove : MonoBehaviour
             case MoveState.idle:
                 {
                     if (!Player_State.ismove)
-                    {                     }
+                    { }
                     if (Sprint())
                     {
                         if (Input.GetKeyDown(KeyCode.W) && i == 1)
@@ -128,8 +129,8 @@ public class _PlayerMove : MonoBehaviour
 
             case MoveState.isSprint:
                 {
-                    _player.Move(CameraD.forward * v * Time.deltaTime  * Sprint_speed);
-                    _player.Move(CameraD.right * h * Time.deltaTime  * Sprint_speed);
+                    _player.Move(CameraD.forward * v * Time.deltaTime * Sprint_speed);
+                    _player.Move(CameraD.right * h * Time.deltaTime * Sprint_speed);
                     MS = MoveState.isMove;
                     if (v == 0 && h == 0)
                     {

@@ -26,6 +26,15 @@ public class NormalAttack : SkillBasicData
 
     }
 
+    public override void UseSkill()
+    {
+        GameObject _na = (GameObject)Instantiate(NA[Combo], transform.position, transform.rotation);
+        if (this.level == 2)
+        { GameObject upna = (GameObject)Instantiate(UPNA[Combo], transform.position, transform.rotation); }
+        AddCombo();
+        int _d = CalculateDamege();
+        isUse = true;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -33,17 +42,12 @@ public class NormalAttack : SkillBasicData
         //進入CD
         CDing();
 
-        if ( CanUseSkill)
+        if (CanUseSkill)
         {
             //show_damage(_d,Player_target._target.position);
             if (Input.GetMouseButtonDown(0))
             {
-                GameObject _na = (GameObject)Instantiate(NA[Combo], transform.position, transform.rotation);
-                if (this.level == 2)
-                { GameObject upna = (GameObject)Instantiate(UPNA[Combo], transform.position, transform.rotation); }
-                AddCombo();
-                int _d = CalculateDamege();
-                isUse = true;
+                UseSkill();
             }
         }
 

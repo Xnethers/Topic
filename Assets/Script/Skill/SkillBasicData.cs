@@ -48,7 +48,7 @@ public abstract class SkillBasicData : MonoBehaviour
     void Update()
     { }
 
-    public void UseSkill()
+    public virtual void UseSkill()
     { isUse = true; isAnimation = true; }
 
 
@@ -85,7 +85,7 @@ public abstract class SkillBasicData : MonoBehaviour
     }
 
     public void StartCD()
-    { CanUseSkill = false; }
+    { CanUseSkill = false; isUse = false; }
     public float GetCDFlaot()
     { return NowCD / CD; }
 
@@ -93,6 +93,7 @@ public abstract class SkillBasicData : MonoBehaviour
     {
         if (!CanUseSkill)
         {
+            isUse = false;
             NowCD += Time.deltaTime;
             if (NowCD >= CD)
             {

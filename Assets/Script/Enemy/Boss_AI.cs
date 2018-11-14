@@ -1,30 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Boss_AI : MonoBehaviour
 {
     public enum Boss_Statement
     {
+        Isground,
+        IsFly,
         Idle,
         Move,
-        Attack,
-        Fly,
         Dead
-    }
-
-
-    public enum skill_list
-    {
-        noisewave,//音波
-        sniper,//月牙天沖
-        shockwave,//甩衝擊波下來-主角攻擊一定時間減弱（30% 5秒）
-        summon//殘血大招：召喚小怪（3-4隻）
     }
 
     public Boss_Statement boss_Statement;//Boss當前狀態
 
-    [SerializeField] skill_list boss_skill;
+
     [SerializeField] GameObject _player;
 
     //public int _distance; //與玩家距離
@@ -34,23 +26,22 @@ public class Boss_AI : MonoBehaviour
     public Enemy_Health boss_health;
     bool can_attack;
 
-    [SerializeField]
-    int _delaytime;
-    [SerializeField]
-    int flyhight = 5;
-    [SerializeField]
-    bool is_fly;
+    [SerializeField] int flyhight = 5;
+    [SerializeField] bool is_fly; //是否懸空
 
     //技能
     noisewave _noisewave;
     summon _summon;
     shock_wave _shockwave;
     sniper _sniper;
-
-
-
+    claw _claw;
 
     // Use this for initialization
+
+    void Awake()
+    {
+
+    }
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -61,53 +52,51 @@ public class Boss_AI : MonoBehaviour
         _summon = GetComponentInChildren<summon>();
         _shockwave = GetComponentInChildren<shock_wave>();
         _sniper = GetComponentInChildren<sniper>();
+        _claw = GetComponentInChildren<claw>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        StateMachine();
+        Debug.Log(boss_Statement);
         if (boss_health._health <= 0)
-        { boss_Statement = Boss_Statement.Dead; }
+        {
+            boss_Statement = Boss_Statement.Dead;
+            ParticleSystem _dieparticle = (ParticleSystem)Instantiate(boss_health.Die_particle, transform);
+            _dieparticle.Play();
+        }
+    }
 
+    Coroutine a;
+
+    void StateMachine()
+    {
         switch (boss_Statement)
         {
             case Boss_Statement.Move:
                 {
-                    break;
-                }
-            case Boss_Statement.Attack:
-                {
-                    switch (boss_skill)
+                    if (boss_Statement == Boss_Statement.Move)
                     {
-                        case skill_list.noisewave://音波
-                            {
-                               StartCoroutine(useskill(_noisewave, skill_list.sniper));
-                                break;
-                            }
-                        case skill_list.sniper://月牙天沖
-                            {
-                                StartCoroutine(useskill(_sniper, skill_list.shockwave));
-                                break;
-                            }
-                        case skill_list.shockwave://甩衝擊波下來-主角攻擊一定時間減弱（30% 5秒）
-                            {
-                                //useskill(_shockwave, skill_list.shockwave);
-                                StartCoroutine(flyanition(_delaytime));
-                                boss_Statement = Boss_Statement.Fly;
-                                break;
-                            }
-                        case skill_list.summon://殘血大招：召喚小怪（3-4隻）
-                            {
-                                StartCoroutine(useskill(_summon, skill_list.shockwave));
-                                useskill(_summon, skill_list.shockwave);
-                                break;
-                            }
-
+                        a = StartCoroutine(flyanition());
                     }
                     break;
                 }
-            case Boss_Statement.Fly:
+            case Boss_Statement.Isground:
                 {
+                    if (boss_Statement == Boss_Statement.Isground)
+                    {
+                        a = StartCoroutine(groundAttack());
+                    }
+                    break;
+                }
+            case Boss_Statement.IsFly:
+                {
+                    if (boss_Statement == Boss_Statement.IsFly)
+                    {
+                        a = StartCoroutine(flyAttack());
+                    }
                     break;
                 }
             case Boss_Statement.Dead:
@@ -117,15 +106,6 @@ public class Boss_AI : MonoBehaviour
                 }
         }
     }
-    /*
-    if(boss_skill == skill_list.noisewave)
-    {
-     _noisewave.useNoisewave();
-     delay(5s)
-     boss_skill = skill_list.sniper;
-    }
-     */
-
     void dead()
     {
         _animator.Play("M_die");
@@ -133,8 +113,6 @@ public class Boss_AI : MonoBehaviour
 
         if (boss_health._health == 0)
         {
-            ParticleSystem _dieparticle = (ParticleSystem)Instantiate(boss_health.Die_particle, transform);
-            _dieparticle.Play();
             Destroy(this.gameObject, boss_health.Die_time);
             //Destroy(eHP._fall, eHP.Die_time);
         }
@@ -148,36 +126,135 @@ public class Boss_AI : MonoBehaviour
         else
         { }
     }
-
-    IEnumerator useskill(SkillBasicData skill, skill_list next)
+    [SerializeField] int k = 0;
+    IEnumerator flyAttack()
     {
-        skill.UseSkill();
-        yield return new WaitForSeconds(_delaytime);
-        boss_skill = next;
-    }
-
-    IEnumerator delay(float delaytime)
-    {
-        yield return new WaitForSeconds(delaytime);
-
-    }
-
-    IEnumerator flyanition(float delaytime)
-    {
-        if (is_fly)
+        while (true)
         {
-            Vector3 flyposition = transform.position - new Vector3(0, flyhight, 0);
-            transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+            if (boss_Statement == Boss_Statement.IsFly)
+            {
+                /* 
+                switch (k)
+                {
+                    case 1:
+                        { yield return new WaitForSeconds(3); _claw.UseSkill(); k++; }
+                        break;
+
+                    case 2:
+                        { yield return new WaitForSeconds(3); _shockwave.UseSkill(); k++; }
+                        break;
+
+                    case 3:
+                        { yield return new WaitForSeconds(3); boss_Statement = Boss_Statement.Move; k = 0; }
+                        break;
+                }
+                */
+                /*
+                _sniper.UseSkill();
+                yield return new WaitForSeconds(8);
+                yield return new WaitForSeconds(2);
+                _noisewave.UseSkill();
+                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(2);
+                boss_Statement = Boss_Statement.Move;
+                */
+            }
+            else
+            {
+                StopCoroutine(a);
+                yield return null;
+            }
+        }
+    }
+
+    IEnumerator groundAttack()
+    {
+        while (true)
+        {
+
+            if (boss_Statement == Boss_Statement.Isground)
+            {
+                switch (k)
+                {
+                    case 1:
+                        { yield return new WaitForSeconds(3); _claw.UseSkill(); k++; }
+                        break;
+
+                    case 2:
+                        { yield return new WaitForSeconds(3); _shockwave.UseSkill(); k++; }
+                        break;
+
+                    case 3:
+                        { yield return new WaitForSeconds(3); _summon.UseSkill(); k++; }
+                        break;
+
+                    case 4:
+                        { yield return new WaitForSeconds(3); _sniper.UseSkill(); k++; }
+                        break;
+
+                    case 5:
+                        { yield return new WaitForSeconds(3); _noisewave.UseSkill(); k++; }
+                        break;
+
+                    case 6:
+                        { yield return new WaitForSeconds(3); boss_Statement = Boss_Statement.Move; }
+                        break;
+
+                }
+                /*
+                _shockwave.UseSkill();
+                yield return new WaitForSeconds(3);
+                _summon.UseSkill();
+                yield return new WaitForSeconds(10);
+                _sniper.UseSkill();
+                yield return new WaitForSeconds(3);
+                _sniper.UseSkill();
+                yield return new WaitForSeconds(3);
+                _sniper.UseSkill();
+                yield return new WaitForSeconds(3);
+                _noisewave.UseSkill();
+                yield return new WaitForSeconds(3);
+                 */
+            }
+            else
+            {
+                StopCoroutine(a);
+                k = 0;
+                yield return null;
+            }
+        }
+    }
+    IEnumerator flyanition()
+    {
+        if (boss_Statement == Boss_Statement.Move)
+        {
+            _animator.SetBool("isfly", true);
+            if (is_fly)
+            {
+                Vector3 flyposition = transform.position - new Vector3(0, flyhight, 0);
+                transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+            }
+            else
+            {
+                Vector3 flyposition = transform.position + new Vector3(0, flyhight, 0);
+                transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+            }
+            yield return new WaitForSeconds(2f);
+            is_fly = !is_fly;
+            _animator.SetBool("isfly", false);
+            yield return null;
+            if (!is_fly)
+            { boss_Statement = Boss_Statement.Isground; }
+            else
+            { boss_Statement = Boss_Statement.IsFly; }
+            yield break;
         }
         else
         {
-            Vector3 flyposition = transform.position + new Vector3(0, flyhight, 0);
-            transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+            StopCoroutine(a);
+            yield return null;
         }
-        _shockwave.UseSkill();
-        yield return new WaitForSeconds(delaytime);
-        is_fly = !is_fly;
-        boss_Statement = Boss_Statement.Fly;
-    }
 
+
+    }
 }

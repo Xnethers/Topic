@@ -36,6 +36,7 @@ public class noisewave : SkillBasicData
         StartCoroutine("creatparticle");
         StopCoroutine("delay");
     }
+   
 
     IEnumerator creatparticle()
     {
@@ -46,10 +47,5 @@ public class noisewave : SkillBasicData
             isUse = false;
         }
         yield return null;
-    }
-
-    public void use()
-    {
-        UseSkill();
     }
 }

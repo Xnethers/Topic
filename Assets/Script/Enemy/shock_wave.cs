@@ -6,18 +6,18 @@ public class shock_wave : SkillBasicData
 {
 
     public GameObject _noisewave;//宣告投射物
-     private Vector3 Point;//宣告複製原點
+    //private Vector3 Point;//宣告複製原點
     //public float Passtime = 0;//宣告經過時間
     public float interval = 0.25f;//宣告子彈間隔時間
 
-    bool shot;
+    [SerializeField]bool shot;
     public int count = 0; //子彈數
     int i = 0;
 
     // Use this for initialization
     void Start()
     {
-        Point = this.transform.position;
+        
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class shock_wave : SkillBasicData
             _animator.Play("shock_wave");
             if (shot && i < count)
             {
-                GameObject bullet = Instantiate(_noisewave, Point, transform.rotation);
+                GameObject bullet = Instantiate(_noisewave, transform.position, _noisewave.transform.rotation);
                 i++;
                 StartCoroutine(timer());
             }
@@ -43,11 +43,6 @@ public class shock_wave : SkillBasicData
         //進入CD
         CDing();
 
-    }
-
-    public void use()
-    {
-        UseSkill();
     }
 
     IEnumerator timer()
