@@ -27,8 +27,8 @@ public class Boss_AI : MonoBehaviour
     bool can_attack;
 
     [SerializeField] int flyhight = 5;
-    [SerializeField] bool is_fly; //是否懸空
-
+    [SerializeField] bool isfly; //是否懸空
+    [SerializeField] bool isswitch; //是否正在切換
     //技能
     noisewave _noisewave;
     summon _summon;
@@ -40,10 +40,6 @@ public class Boss_AI : MonoBehaviour
 
     void Awake()
     {
-
-    }
-    void Start()
-    {
         _player = GameObject.FindGameObjectWithTag("Player");
         boss_health = GetComponent<Enemy_Health>();
         _animator = GetComponentInChildren<Animator>();
@@ -53,7 +49,12 @@ public class Boss_AI : MonoBehaviour
         _shockwave = GetComponentInChildren<shock_wave>();
         _sniper = GetComponentInChildren<sniper>();
         _claw = GetComponentInChildren<claw>();
-
+    }
+    void Start()
+    {
+        StartCoroutine(flyanition());
+        StartCoroutine(groundAttack());
+        StartCoroutine(flyAttack());
     }
 
     // Update is called once per frame
@@ -77,25 +78,29 @@ public class Boss_AI : MonoBehaviour
         {
             case Boss_Statement.Move:
                 {
-                    if (boss_Statement == Boss_Statement.Move)
+                    if (isfly && !isswitch)
                     {
-                        a = StartCoroutine(flyanition());
+                        boss_Statement = Boss_Statement.Move;
+                    }
+                    else if (!isfly && !isswitch)
+                    {
+                        boss_Statement = Boss_Statement.IsFly;
                     }
                     break;
                 }
             case Boss_Statement.Isground:
                 {
-                    if (boss_Statement == Boss_Statement.Isground)
+                    if (isswitch)
                     {
-                        a = StartCoroutine(groundAttack());
+                        boss_Statement = Boss_Statement.Move;
                     }
                     break;
                 }
             case Boss_Statement.IsFly:
                 {
-                    if (boss_Statement == Boss_Statement.IsFly)
+                    if (isswitch)
                     {
-                        a = StartCoroutine(flyAttack());
+                        boss_Statement = Boss_Statement.Move;
                     }
                     break;
                 }
@@ -118,7 +123,7 @@ public class Boss_AI : MonoBehaviour
         }
     }
 
-    void Movement(int d)
+    void MovetoPlayer(int d)
     {
         can_attack = Physics.CheckSphere(transform.position, d, 1 << LayerMask.NameToLayer("Player"));
         if (!can_attack)
@@ -133,37 +138,35 @@ public class Boss_AI : MonoBehaviour
         {
             if (boss_Statement == Boss_Statement.IsFly)
             {
-                
+                isfly = true;
                 switch (k)
                 {
+                    case 0:
+                        { yield return new WaitForSeconds(3); _sniper.UseSkill(); k++; }
+                        break;
+
                     case 1:
-                        { yield return new WaitForSeconds(3); _claw.UseSkill(); k++; }
+                        { yield return new WaitForSeconds(3); _sniper.UseSkill(); k++; }
                         break;
 
                     case 2:
-                        { yield return new WaitForSeconds(3); _shockwave.UseSkill(); k++; }
+                        { yield return new WaitForSeconds(3); _sniper.UseSkill(); k++; }
                         break;
 
                     case 3:
-                        { yield return new WaitForSeconds(3); boss_Statement = Boss_Statement.Move; k = 0; }
+                        { yield return new WaitForSeconds(3); _noisewave.UseSkill(); k++; }
+                        break;
+
+                    case 4:
+                        { yield return new WaitForSeconds(3); isswitch = true; }
                         break;
                 }
+            }
+            else if (boss_Statement == Boss_Statement.Isground)
+            { }
 
-                /*
-                _sniper.UseSkill();
-                yield return new WaitForSeconds(8);
-                yield return new WaitForSeconds(2);
-                _noisewave.UseSkill();
-                yield return new WaitForSeconds(2);
-                yield return new WaitForSeconds(2);
-                boss_Statement = Boss_Statement.Move;
-                */
-            }
             else
-            {
-                StopCoroutine(a);
-                yield return null;
-            }
+            { yield return k = 0; }
         }
     }
 
@@ -171,91 +174,83 @@ public class Boss_AI : MonoBehaviour
     {
         while (true)
         {
-
             if (boss_Statement == Boss_Statement.Isground)
             {
-                
                 switch (k)
                 {
+                    case 0:
+                        {
+                            _claw.UseSkill();
+                            yield return new WaitForSeconds(3);
+                            k++;
+                        }
+                        break;
+
                     case 1:
-                        { yield return new WaitForSeconds(3); _claw.UseSkill(); k++; }
+                        {
+                            _shockwave.UseSkill();
+                            yield return new WaitForSeconds(3);
+                            k++;
+                        }
                         break;
 
                     case 2:
-                        { yield return new WaitForSeconds(3); _shockwave.UseSkill(); k++; }
-                        break;
-
-                    case 3:
                         { yield return new WaitForSeconds(3); _summon.UseSkill(); k++; }
                         break;
 
-                    case 4:
+                    case 3:
                         { yield return new WaitForSeconds(3); _sniper.UseSkill(); k++; }
                         break;
 
-                    case 5:
+                    case 4:
                         { yield return new WaitForSeconds(3); _noisewave.UseSkill(); k++; }
                         break;
 
-                    case 6:
-                        { yield return new WaitForSeconds(3); boss_Statement = Boss_Statement.Move; }
+                    case 5:
+                        { yield return new WaitForSeconds(3); isswitch = true; }
                         break;
-
                 }
-                
-                /*
-                _shockwave.UseSkill();
-                yield return new WaitForSeconds(3);
-                _summon.UseSkill();
-                yield return new WaitForSeconds(10);
-                _sniper.UseSkill();
-                yield return new WaitForSeconds(3);
-                _sniper.UseSkill();
-                yield return new WaitForSeconds(3);
-                _sniper.UseSkill();
-                yield return new WaitForSeconds(3);
-                _noisewave.UseSkill();
-                yield return new WaitForSeconds(3);
-                 */
             }
+            else if (boss_Statement == Boss_Statement.IsFly)
+            { }
             else
             {
-                StopCoroutine(a);
-                k = 0;
-                yield return null;
+                yield return k = 0; ;
             }
         }
     }
 
     IEnumerator flyanition()
     {
-        if (boss_Statement == Boss_Statement.Move)
+        while (true)
         {
-            _animator.SetBool("isfly", true);
-            if (is_fly)
+            
+            if (boss_Statement == Boss_Statement.Move)
             {
-                Vector3 flyposition = transform.position - new Vector3(0, flyhight, 0);
-                transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+                _animator.SetBool("isfly", true);
+                if (isfly)
+                {
+                    
+                    Vector3 flyposition = transform.position - new Vector3(0, flyhight, 0);
+                    transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+                    yield return new WaitForSeconds(2f);
+                    _animator.SetBool("isfly", false);
+                    isswitch = false;
+                }
+                else
+                {
+                    Vector3 flyposition = transform.position + new Vector3(0, flyhight, 0);
+                    transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+                    yield return new WaitForSeconds(2f);
+                    _animator.SetBool("isfly", false);
+                    isswitch = false;
+                }
             }
             else
             {
-                Vector3 flyposition = transform.position + new Vector3(0, flyhight, 0);
-                transform.position = Vector3.Lerp(transform.position, flyposition, Time.deltaTime);
+                yield return null;
+                isfly = !isfly;
             }
-            yield return new WaitForSeconds(2f);
-            is_fly = !is_fly;
-            _animator.SetBool("isfly", false);
-            yield return null;
         }
-        else
-        {
-            StopCoroutine(a);
-            if (!is_fly)
-            { boss_Statement = Boss_Statement.Isground; }
-            else
-            { boss_Statement = Boss_Statement.IsFly; }
-            yield return null;
-        }
-
     }
 }
