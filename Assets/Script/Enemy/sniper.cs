@@ -37,7 +37,7 @@ public class sniper : SkillBasicData
 
         if (CanUseSkill && isUse)
         {
-           _animator.Play("sniper");
+            _animator.Play("sniper");
             if (shot && i < count)
             {
                 rotation = Quaternion.Euler(0, Q, 0);

@@ -16,7 +16,7 @@ public class Attack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Passtime > interval)
         {
-            GameObject bullet = Instantiate(Projectile, Point);
+            Instantiate(Projectile, Point);
             Passtime = 0;
         }
     }

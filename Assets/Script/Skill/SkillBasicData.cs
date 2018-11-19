@@ -29,7 +29,7 @@ public abstract class SkillBasicData : MonoBehaviour
 
     public bool isAnimation = false;//是否在播放動畫 
     private Abilityvalue _ability;
-    private UI_Damage Damage_UI;
+    //private UI_Damage Damage_UI;
 
     protected GameObject _player;
     private Player_Health HPMP;
@@ -41,7 +41,7 @@ public abstract class SkillBasicData : MonoBehaviour
         _move = _player.GetComponent<_PlayerMove>();
         _animator = _player.GetComponentInChildren<Animator>();
         _ability = _player.GetComponentInChildren<Abilityvalue>();
-        Damage_UI = FindObjectOfType<UI_Damage>();
+        //Damage_UI = FindObjectOfType<UI_Damage>();
         HPMP = _player.GetComponent<Player_Health>();
     }
 

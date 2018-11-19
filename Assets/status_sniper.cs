@@ -14,7 +14,7 @@ public class status_sniper : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-		  _boss = GameObject.Find("Boss").transform;
+		_boss = animator.transform;
         _sniper = _boss.GetComponentInChildren<sniper>(); 
         _sniper.UseSkill();
         int i = animator.GetInteger("use_sniper") + 1;

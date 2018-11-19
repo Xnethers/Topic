@@ -10,28 +10,34 @@ public class ChangeScene : MonoBehaviour
     static public string _number;
 
     public AudioSource _audiosource;
-    private AsyncOperation next_scene;
 
     bool _audio;
 
-    public Image _block;
+    [Header("換場黑幕")]
+    private GameObject _loadingCanvas;
+    [SerializeField] private Image _block;
 
-    [Header("連接到某場景")]
-    public float speed;
-    bool have_audio = true;
+    [Header("連接的場景")]
+    public string _scene;
+    private AsyncOperation next_scene;
+    [SerializeField] private int loading_scene;
+    [Space(10)]
+    private float speed;
 
-    public static bool change_scene = false;
 
 
     void Start()
     {
-        //_block = GameObject.Find("Block").GetComponent<Image>();
-        /* 
+        _block = GameObject.FindWithTag("Block").GetComponent<Image>();
+        _loadingCanvas = GameObject.FindObjectOfType<loading>().gameObject;
+
         if (_scene != null)
         {
             next_scene = SceneManager.LoadSceneAsync(_scene);
             next_scene.allowSceneActivation = false;
-        }*/
+        }
+
+        loading_scene = SceneUtility.GetBuildIndexByScenePath("Assets/Scene/loading");
     }
 
     void Update()
@@ -42,7 +48,6 @@ public class ChangeScene : MonoBehaviour
             BGM_disappear();
             if (_block.color.a >= 1 && _audiosource.volume <= 0)
             {
-                change_scene = true;
                 _audio = false;
             }
         }
@@ -66,10 +71,7 @@ public class ChangeScene : MonoBehaviour
         {
             _audio = true;
             if (_number != null)
-            {
-                change_scene = true;
-                SceneManager.LoadSceneAsync(_number);
-            }
+            { SceneManager.LoadSceneAsync(_number); }
         }
     }
 
@@ -83,8 +85,17 @@ public class ChangeScene : MonoBehaviour
     void BGM_disappear()
     {
         _block.color += new Color(0, 0, 0, speed / 10 * Time.deltaTime);
-        if (_audiosource != null)
-            _audiosource.volume -= Time.deltaTime * speed / 10;
+
+        if (_block.color.a >= 1)
+        {
+            _loadingCanvas.SetActive(true);
+            next_scene.allowSceneActivation = true;
+        }
+        else
+        {
+            if (_audiosource != null)
+                _audiosource.volume -= Time.deltaTime * speed / 10;
+        }
     }
 
 

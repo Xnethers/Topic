@@ -22,10 +22,10 @@ public enum ReleaseType
     Self,
     Enemy
 }
-public class SkillInfo : MonoBehaviour 
+public class SkillInfo : MonoBehaviour
 {    //技能信息表中对应的各条属性
     public int id;
-    public string name;
+    public string skillname;
     public string icon_name;
     public string des;
     public ApplyType applyType;

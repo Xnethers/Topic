@@ -14,7 +14,6 @@ using System.Collections;
 
 namespace ShaderForge {
 
-
 	public delegate T Func<T>();
 	
 	public enum UpToDateState{UpToDate, OutdatedSoft, OutdatedHard};

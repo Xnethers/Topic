@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-
     void Awake()
     {
         if (instance != null)
@@ -13,18 +12,32 @@ public class Inventory : MonoBehaviour
             Debug.LogWarning("More than one instance of Inventory found!");
             return;
         }
-
+        
         instance = this;
-    }
-    public Image[] itemImages = new Image[numItemSlots];
-    public List<Item> items = new List<Item>();
-    public Text[] counts = new Text[numItemSlots];
+        ItemSlot = new GameObject[numItemSlots];
+        itemImages = new Image[numItemSlots];
+        items = new Item[numItemSlots];
+        counts = new Text[numItemSlots];
 
-    public const int numItemSlots = 20;
-    int itemCount = 0;
+        for (int i = 0; i < numItemSlots; i++)
+        {
+            ItemSlot[i] = GameObject.Find("ItemSlot (" + i + ")");
+            itemImages[i] = ItemSlot[i].GetComponentInChildren<Image>();
+            counts[i] = ItemSlot[i].GetComponentInChildren<Text>();
+        }
+    }
+    [SerializeField] public int numItemSlots = 20;
+    [SerializeField] GameObject[] ItemSlot;
+    Image[] itemImages;
+    public Item[] items;
+    Text[] counts;
+
+
+    int itemCount = 1;
+
     public void AddItem(Item itemToAdd)
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < numItemSlots; i++)
         {
             if (items[i] == itemToAdd)
             {
@@ -48,7 +61,7 @@ public class Inventory : MonoBehaviour
     }
     public void RemoveItem(Item itemToRemove)
     {
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < numItemSlots; i++)
         {
             if (items[i] == itemToRemove && itemCount > 1)
             {

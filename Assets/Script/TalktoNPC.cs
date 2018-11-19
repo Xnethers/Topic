@@ -6,7 +6,7 @@ using Fungus;
 public class TalktoNPC : MonoBehaviour {
     public bool is_talk;
 
-    [Header("物品訊息")]
+    [Header("訊息")]
     public Flowchart _flowchart;
 
     //RaycastHit hit;

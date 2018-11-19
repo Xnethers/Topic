@@ -9,7 +9,7 @@ public class Search_Item : MonoBehaviour
     public Image UI;
     public Flowchart _flowchart;
     public float distance;
-
+    [Space(100)]
     [SerializeField, Header("探索物品")]
     private bool is_search;
     public ItemPickup _itemup;
@@ -27,11 +27,7 @@ public class Search_Item : MonoBehaviour
     {
         //if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distance, 1 << LayerMask.NameToLayer("Item")))
         hit = Physics.OverlapSphere(transform.position, distance, 1 << LayerMask.NameToLayer("Item"));
-
         npc = Physics.OverlapSphere(transform.position, distance, 1 << LayerMask.NameToLayer("NPC"));
-
-        //Debug.Log("CanSearchItem = " + CanSearchItem());
-        //Debug.Log("CanTalktoNPC = " + CanTalktoNPC());
 
         if (hit.Length > 1)
         { Debug.Log("object overlapping"); }
@@ -99,6 +95,10 @@ public class Search_Item : MonoBehaviour
                 _flowchart.ExecuteBlock("Get_Key");
                 _itemup.PickUp();
             }
+            else if (_itemup.item.ID > 0030)
+            {
+                _flowchart.ExecuteBlock("hairclip");
+            }
         }
 
     }
@@ -138,5 +138,4 @@ public class Search_Item : MonoBehaviour
             _flowchart.ExecuteBlock("NPC" + NPC_number);
         }
     }
-
 }
