@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class noisewave : SkillBasicData
 {
-    public GameObject _noisewave;//宣告投射物
     [SerializeField] private noisewaveShoter[] Point;//宣告複製原點
     [SerializeField] float delaytime;
+
+     private Transform player;
 
 
     // Use this for initialization
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+            foreach (noisewaveShoter item in Point)
+            { item.gameObject.transform.rotation *= Quaternion.Euler(40, 0, 0); }
+        
+        
+            foreach (noisewaveShoter item in Point)
+            { item.gameObject.transform.rotation *= Quaternion.Euler(0, 0, 0); }
+        
         //Debug
         if (Input.GetKeyDown(KeyCode.M))
         { UseSkill(); }
@@ -36,12 +45,14 @@ public class noisewave : SkillBasicData
         StartCoroutine("creatparticle");
         StopCoroutine("delay");
     }
-   
+
 
     IEnumerator creatparticle()
     {
+        
         foreach (noisewaveShoter i in Point)
         {
+            i.k = (transform.position.x - player.position.x) / Vector3.Distance(transform.position, player.position);
             i.shot = true;
             StartCD();
             isUse = false;

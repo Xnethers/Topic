@@ -19,12 +19,12 @@ public class ChangeScenePoint : MonoBehaviour
     {
 
     }
-    void OnCollisionEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             if (_changeScene.enabled)
-            { _changeScene.Change_scene(_changeScene._scene); }
+            { _changeScene.StartFade(); }
             else
             { _flowchart.ExecuteBlock("can'tChangeScene"); }
         }

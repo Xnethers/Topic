@@ -9,7 +9,6 @@ public class Search_Item : MonoBehaviour
     public Image UI;
     public Flowchart _flowchart;
     public float distance;
-    [Space(100)]
     [SerializeField, Header("探索物品")]
     private bool is_search;
     public ItemPickup _itemup;

@@ -12,6 +12,8 @@ public class noisewaveShoter : MonoBehaviour
     [SerializeField] public bool shot = false;
     public int count = 0; //子彈數
     int i = 0;
+    Quaternion rotation;
+    public float k;
 
 
     // Use this for initialization
@@ -25,14 +27,14 @@ public class noisewaveShoter : MonoBehaviour
     {
         if (shot && i < count)
         {
-            GameObject bullet = Instantiate(_noisewave, transform.position, transform.rotation);
+            rotation = Quaternion.Euler(k, 0, 0);
+            GameObject bullet = Instantiate(_noisewave, transform.position, transform.rotation * rotation);
             i++;
             if (i == count)
-            { i = 0; shot = false;}
-			else
-            {StartCoroutine(timer());}
+            { i = 0; shot = false; }
+            else
+            { StartCoroutine(timer()); }
         }
-
     }
 
     IEnumerator timer()

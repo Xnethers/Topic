@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class sniper : SkillBasicData
 {
-
     public GameObject P_sniper;//宣告投射物
     Transform Point;//宣告複製原點
     //public float Passtime = 0;//宣告經過時間
@@ -13,34 +12,36 @@ public class sniper : SkillBasicData
     [SerializeField] bool shot;
     public int count = 0; //子彈數
     [SerializeField] private int angle;//攻擊角度
+    private Transform player;
     int i = 0;
-
     float Q = 0;
 
-
     Quaternion rotation;
-
+    bool isfly;
 
     // Use this for initialization
     void Start()
     {
         Q = -angle / 2;
         rotation = Quaternion.Euler(0, Q, 0);
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         //Debug
         if (Input.GetKeyDown(KeyCode.N)) { UseSkill(); shot = true; Point = this.transform; }
-        //
 
         if (CanUseSkill && isUse)
         {
             _animator.Play("sniper");
             if (shot && i < count)
             {
-                rotation = Quaternion.Euler(0, Q, 0);
+
+                rotation = Quaternion.Euler(k, Q, 0);
                 GameObject bullet = Instantiate(P_sniper, transform.position, transform.rotation * rotation);
                 i++;
                 if (i != count)
@@ -57,6 +58,7 @@ public class sniper : SkillBasicData
         //進入CD
         CDing();
     }
+    public float k;
 
     IEnumerator timer()
     {
@@ -64,5 +66,6 @@ public class sniper : SkillBasicData
         yield return new WaitForSeconds(interval);
         shot = true;
         Q += angle / 4;
+        k = (transform.position.x - player.position.x) / Vector3.Distance(transform.position, player.position);
     }
 }

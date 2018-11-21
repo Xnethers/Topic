@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
-public class AI3 : MonoBehaviour
+public class Boss_AI : MonoBehaviour
 {
     public enum Boss_Statement
     {
@@ -109,6 +108,7 @@ public class AI3 : MonoBehaviour
                 }
             case Boss_Statement.Isground:
                 {
+                    
                     isfly = false;
                     if (isswitch)
                     {

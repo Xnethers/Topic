@@ -6,97 +6,127 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-
+    
     static public string _number;
 
     public AudioSource _audiosource;
 
-    bool _audio;
+    bool isloading;
 
-    [Header("換場黑幕")]
-    private GameObject _loadingCanvas;
+    [Header("轉場黑幕")]
     [SerializeField] private Image _block;
+    [SerializeField] private GameObject _loadingPanel;
 
-    [Header("連接的場景")]
+    [Header("下一場景")]
     public string _scene;
     private AsyncOperation next_scene;
-    [SerializeField] private int loading_scene;
-    [Space(10)]
-    private float speed;
+    private int loading_scene;
+    [Space(10), SerializeField, Range(1, 20)]
+    private int speed;
+    int i = 0;
+    Scene nowscene;
 
 
 
     void Start()
     {
-        _block = GameObject.FindWithTag("Block").GetComponent<Image>();
-        _loadingCanvas = GameObject.FindObjectOfType<loading>().gameObject;
-
-        if (_scene != null)
-        {
-            next_scene = SceneManager.LoadSceneAsync(_scene);
-            next_scene.allowSceneActivation = false;
-        }
-
-        loading_scene = SceneUtility.GetBuildIndexByScenePath("Assets/Scene/loading");
+        nowscene = SceneManager.GetActiveScene();
+        _block = transform.FindChild("Canvas").FindChild("Block").GetComponent<Image>();
+        _loadingPanel = GameObject.FindGameObjectWithTag("loadingPanel");
+        _loadingPanel.SetActive(false);
     }
 
     void Update()
     {
-        //Debug.Log(next_scene.progress);
-        if (_audio)
-        {
-            BGM_disappear();
-            if (_block.color.a >= 1 && _audiosource.volume <= 0)
-            {
-                _audio = false;
-            }
-        }
+        Shady();
+        if (Input.GetKeyDown(KeyCode.F2))
+        { StartFade(); }
+        Debug.Log(nowscene.name);
+        if (Input.GetKeyDown(KeyCode.F3))
+            SceneManager.UnloadSceneAsync(nowscene);
     }
+
+    public void StartFade()
+    { i++; }
 
     public void Start_game()
     {
-        //Scene nowscene = SceneManager.GetActiveScene();
-
-        if (!_audio)
+        if (!isloading)
         {
-            _audio = true;
+            isloading = true;
             //SceneManager.UnloadSceneAsync(nowscene);
             next_scene.allowSceneActivation = true;
         }
+
     }
 
     public void Continue_game()
     {
-        if (!_audio)
+        if (!isloading)
         {
-            _audio = true;
+            isloading = true;
             if (_number != null)
             { SceneManager.LoadSceneAsync(_number); }
         }
     }
 
-    public void Change_scene(string scene)
-    { SceneManager.LoadSceneAsync(scene); }
+    public void Change_scene(string s)
+    {
+        next_scene = SceneManager.LoadSceneAsync(s);
+        next_scene.allowSceneActivation = false;
+        StartCoroutine(LoadScene());
+    }
+
+
 
     public void Exit()
     { Application.Quit(); }
 
-
-    void BGM_disappear()
+    void Shady()
     {
-        _block.color += new Color(0, 0, 0, speed / 10 * Time.deltaTime);
-
-        if (_block.color.a >= 1)
+        switch (i)
         {
-            _loadingCanvas.SetActive(true);
-            next_scene.allowSceneActivation = true;
-        }
-        else
-        {
-            if (_audiosource != null)
-                _audiosource.volume -= Time.deltaTime * speed / 10;
+            case 1:
+                {
+                    _block.color += new Color(0, 0, 0, speed / 10 * Time.deltaTime);
+                    if (_block.color.a >= 1)
+                    { _loadingPanel.SetActive(true); Change_scene(_scene); i++; }
+                }
+                break;
+            case 2:
+                { }
+                break;
+            case 3:
+                {
+                    _block.color -= new Color(0, 0, 0, speed / 10 * Time.deltaTime);
+                    if (_block.color.a <= 0)
+                    {  i = 0; }
+                    break;
+                }
+            default:
+                { i = 0; break; }
         }
     }
 
 
+    IEnumerator LoadScene()
+    {
+        while (true)
+        {
+            if (i == 2)
+            {
+                if (next_scene.progress >= 0.9f)
+                {
+                    yield return new WaitForSeconds(3);
+                    next_scene.allowSceneActivation = true; 
+                    _loadingPanel.SetActive(false);
+                    i++;
+                    yield return null;
+                }
+            }
+            else
+            { yield return null; }
+        }
+
+    }
 }

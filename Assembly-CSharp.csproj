@@ -571,6 +571,7 @@
      <Compile Include="Assets\Script\Creat_Enemy.cs" />
      <Compile Include="Assets\Script\CustomInput.cs" />
      <Compile Include="Assets\Script\Direction.cs" />
+     <Compile Include="Assets\Script\DontDestroy.cs" />
      <Compile Include="Assets\Script\Enemy\AI.cs" />
      <Compile Include="Assets\Script\Enemy\Attack.cs" />
      <Compile Include="Assets\Script\Enemy\BookCase.cs" />

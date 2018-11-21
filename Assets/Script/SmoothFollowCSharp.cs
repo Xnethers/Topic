@@ -37,7 +37,7 @@ public class SmoothFollowCSharp : MonoBehaviour
 
     void Start()
     {
-
+        target = GameObject.Find("camera_t").transform;
     }
     void LateUpdate()
     {
@@ -47,21 +47,6 @@ public class SmoothFollowCSharp : MonoBehaviour
             return;
         if (target)
         {
-            /* 
-            if (Input.GetMouseButton(1))
-            {
-                float x1 = x + Input.GetAxis("Mouse X");
-                x = Mathf.LerpAngle(x, x1, Time.deltaTime * sensitivity * z);
-                float y1 = y - Input.GetAxis("Mouse Y");
-                y = Mathf.LerpAngle(y, y1, Time.deltaTime * sensitivity * z);
-
-                /*transform.RotateAround(target.position, Vector3.up, x * horizontalRotation);
-                if (transform.position.z < target.position.z)
-                    transform.RotateAround(target.position, -Vector3.right, y * horizontalRotation);
-                else
-                    transform.RotateAround(target.position, Vector3.right, y * horizontalRotation);
-            }
-            */
             if (Input.GetMouseButton(1))
             {
                 x += Input.GetAxis("Mouse X") * Time.deltaTime * sensitivity * z;
@@ -69,13 +54,13 @@ public class SmoothFollowCSharp : MonoBehaviour
             }
 
             if (x > 360)
-			{
-				x -= 360;
-			}
-			else if (x < 0)
-			{
-				x += 360;
-			}
+            {
+                x -= 360;
+            }
+            else if (x < 0)
+            {
+                x += 360;
+            }
 
             float d = distance - Input.GetAxis("Mouse ScrollWheel");
             distance = Mathf.Lerp(distance, d, z);
@@ -93,7 +78,7 @@ public class SmoothFollowCSharp : MonoBehaviour
 
 
             transform.LookAt(target);
-            
+
         }
     }
 
@@ -104,7 +89,7 @@ public class SmoothFollowCSharp : MonoBehaviour
         {
             if (hit.collider.tag == "Wall")
             {
-                h = hit.distance/2;
+                h = hit.distance / 2;
                 Rhit = true;
             }
         }
