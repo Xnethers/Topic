@@ -59,7 +59,12 @@ public class AI : MonoBehaviour
         Animation();
         Lineofsight();
         if (eHP._health <= 0)
-        {dead();}
+        {
+            dead();
+            ParticleSystem _dieparticle = (ParticleSystem)Instantiate(eHP.Die_particle, transform);
+            _dieparticle.Play();
+        }
+        
         distance = Vector3.Distance(_player.position, transform.position);
 
         switch (_type)
@@ -210,11 +215,8 @@ public class AI : MonoBehaviour
     {
         _animator.Play("M_die");
         eHP._health = 0;
-
         if (eHP._health == 0)
         {
-            ParticleSystem _dieparticle = (ParticleSystem)Instantiate(eHP.Die_particle, transform);
-            _dieparticle.Play();
             Destroy(this.gameObject, eHP.Die_time);
             //Destroy(eHP._fall, eHP.Die_time);
         }

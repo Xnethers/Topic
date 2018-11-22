@@ -35,8 +35,7 @@ public class Amulet : SkillBasicData
             if (CanUseSkill && Input.GetKeyDown(KeyCode.Alpha1))
             {
                 StartCD();
-
-                shotAmulet(1);
+                 StartCoroutine( shotAmulet(1));
             }
         }
 
@@ -45,15 +44,27 @@ public class Amulet : SkillBasicData
             if (CanUseSkill && Input.GetKeyDown(KeyCode.Alpha1))
             {
                 StartCD();
-                shotAmulet(3);
+                StartCoroutine( shotAmulet(3));
             }
         }
     }
-
+    IEnumerator shotAmulet(int i)
+    {
+        _animator.Play("Amulet");
+        for (int a = 0; a < i; a++)
+        {
+            Rigidbody Amulet = (Rigidbody)Instantiate(AmuletSource, transform.position, transform.rotation);
+            Amulet.velocity = transform.TransformDirection(Vector3.forward * Speed);
+            Physics.IgnoreCollision(Amulet.GetComponent<Collider>(), transform.parent.parent.GetComponent<Collider>());
+            yield return new WaitForSeconds(0.25f);
+        }
+        yield return null;
+    }
+    /*
     void shotAmulet(int i)
     {
         _animator.Play("Amulet");
-        for (int a = 1; a < i; a++)
+        for (int a = 0; a < i; a++)
         {
             Rigidbody Amulet = (Rigidbody)Instantiate(AmuletSource, transform.position, transform.rotation);
             Amulet.velocity = transform.TransformDirection(Vector3.forward * Speed);
@@ -62,5 +73,5 @@ public class Amulet : SkillBasicData
 
         
         GetComponent<AudioSource>().PlayOneShot(ThrowerSound);
-    }
+    } */
 }

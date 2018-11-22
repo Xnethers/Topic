@@ -10,4 +10,6 @@ public class Item : ScriptableObject
     public Sprite icon;
     public bool if_only;
 
+    new public string Description = "new Description";
+
 }

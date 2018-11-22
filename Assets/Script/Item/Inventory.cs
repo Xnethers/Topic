@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
             Debug.LogWarning("More than one instance of Inventory found!");
             return;
         }
-        
+
         instance = this;
         ItemSlot = new GameObject[numItemSlots];
         itemImages = new Image[numItemSlots];
@@ -21,19 +21,24 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < numItemSlots; i++)
         {
-            ItemSlot[i] = GameObject.Find("ItemSlot (" + i + ")");
-            itemImages[i] = ItemSlot[i].GetComponentInChildren<Image>();
+            ItemSlot[i] = transform.FindChild("ItemSlot (" + i + ")").gameObject;
+            itemImages[i] = ItemSlot[i].transform.FindChild("ItemImage").GetComponentInChildren<Image>();
             counts[i] = ItemSlot[i].GetComponentInChildren<Text>();
         }
     }
     [SerializeField] public int numItemSlots = 20;
-    [SerializeField] GameObject[] ItemSlot;
-    Image[] itemImages;
+    [SerializeField] public GameObject[] ItemSlot;
+    [SerializeField] Image[] itemImages;
     public Item[] items;
     Text[] counts;
 
 
     int itemCount = 1;
+
+    public void getiteminfo()
+    {
+        Debug.Log()
+    }
 
     public void AddItem(Item itemToAdd)
     {

@@ -38,15 +38,30 @@ public class MagicField : SkillBasicData
         if (CanUseSkill && isUse && isAnimation)
         {
             CostMP();
-            _particle.Play(true);
-            targetColliders = hitColliders;
-            settle();
+            if (level == 1)
+            {
+                _particle.Play(true);
+                targetColliders = hitColliders;
+                settle();
+            }
+            else if (level == 2)
+            { targetColliders = hitColliders; StartCoroutine(Settle()); }
             StartCD();
         }
         if (isAnimation)
         {
             DrawTool.EndDraw(Rectangle_p, false);
             isAnimation = false;
+        }
+    }
+    IEnumerator Settle()
+    {
+        while (true)
+        {
+            settle();
+            _particle.Play(true);
+            yield return new WaitForSeconds(3);
+            break;
         }
     }
 

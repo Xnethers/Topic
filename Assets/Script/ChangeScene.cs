@@ -16,6 +16,7 @@ public class ChangeScene : MonoBehaviour
     [Header("轉場黑幕")]
     [SerializeField] private Image _block;
     [SerializeField] private GameObject _loadingPanel;
+    [SerializeField] private GameObject _canvas;
 
     [Header("下一場景")]
     public string _scene;
@@ -31,8 +32,10 @@ public class ChangeScene : MonoBehaviour
     void Start()
     {
         nowscene = SceneManager.GetActiveScene();
+        /* 
         _block = transform.FindChild("Canvas").FindChild("Block").GetComponent<Image>();
         _loadingPanel = GameObject.FindGameObjectWithTag("loadingPanel");
+        */
         _loadingPanel.SetActive(false);
     }
 
@@ -41,13 +44,13 @@ public class ChangeScene : MonoBehaviour
         Shady();
         if (Input.GetKeyDown(KeyCode.F2))
         { StartFade(); }
-        Debug.Log(nowscene.name);
+        //Debug.Log(nowscene.name);
         if (Input.GetKeyDown(KeyCode.F3))
             SceneManager.UnloadSceneAsync(nowscene);
     }
 
     public void StartFade()
-    { i++; }
+    { _block.gameObject.SetActive(true); i++; }
 
     public void Start_game()
     {

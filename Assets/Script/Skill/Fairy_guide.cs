@@ -9,7 +9,6 @@ public class Fairy_guide : SkillBasicData
     public AnimationClip fairy_guide;
     float ani_time;
     //public Collider[] targetColliders;
-    GameObject _sword;
     public Transform Rectangle_p;
 
     // Use this for initialization
@@ -34,24 +33,15 @@ public class Fairy_guide : SkillBasicData
         if (CanUseSkill && isUse && isAnimation)
         {
             CostMP();
-            _sword = Instantiate(sword, transform.position, transform.rotation);
-            _sword.transform.SetParent(transform);
+            _animator.Play("Fairy_guide");
+            GameObject _sword = Instantiate(sword, transform.position, transform.rotation);
+            if (level == 2)
+            {
+                GameObject sword1 = Instantiate(sword, transform.position, transform.rotation * Quaternion.Euler(0, 0, 45));
+                GameObject sword2 = Instantiate(sword, transform.position, transform.rotation * Quaternion.Euler(0, 0, -90));
+            }
             StartCD(); isUse = false;
             //settle();
-        }
-
-        //播放動畫
-        if (isAnimation)
-        {
-            ani_time -= Time.deltaTime;
-            //DrawTool.Draw(Rectangle_p, true);
-            if (ani_time <= 0)
-            {
-                ani_time = fairy_guide.length;
-                Destroy(_sword);
-                //DrawTool.EndDraw(Rectangle_p, true);
-                isAnimation = false;
-            }
         }
     }
 

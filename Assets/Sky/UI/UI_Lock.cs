@@ -10,7 +10,7 @@ public class UI_Lock : MonoBehaviour
     //public Transform Target;//玩家的目標
     public RectTransform rectTransform;
     public Image targetUI;//瞄準UI
-    //public Image targetUI_Lock;//瞄準UI(鎖定後)
+    [SerializeField] Image inside;//瞄準UI(內環)
     public Color targetColor;//UI顏色
 
     private Vector2 screenpos = Vector3.zero;
@@ -21,14 +21,13 @@ public class UI_Lock : MonoBehaviour
     }
     void Update()
     {
-
         //當玩家有目標時
         if (Player_target._target != null)
         { LockTarget(Player_target._target); }
         else
         { Unlock(); }
-        //沒鎖定時
 
+        //沒鎖定時
         if (transform.position.x > Screen.width)
         { Unlock(); }
         else if (transform.position.y > Screen.height)
@@ -42,8 +41,13 @@ public class UI_Lock : MonoBehaviour
         targetUI.color = targetColor;
         screenpos = maincamera.WorldToScreenPoint(Target.position);
         transform.position = screenpos;
+        inside.transform.position = screenpos;
+        inside.rectTransform.rotation *= Quaternion.Euler(0, 0, 5);
     }
 
     void Unlock()
-    { targetUI.color = Color.clear; }
+    {
+        targetUI.color = Color.clear;
+        inside.color = Color.clear;
+    }
 }
