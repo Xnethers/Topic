@@ -596,10 +596,12 @@
      <Compile Include="Assets\Script\Enemy_Drop.cs" />
      <Compile Include="Assets\Script\Follow.cs" />
      <Compile Include="Assets\Script\GameSaveXML.cs" />
+     <Compile Include="Assets\Script\Hairclip.cs" />
      <Compile Include="Assets\Script\Item\Fall_item.cs" />
      <Compile Include="Assets\Script\Item\GameManager.cs" />
      <Compile Include="Assets\Script\Item\Inventory.cs" />
      <Compile Include="Assets\Script\Item\Item.cs" />
+     <Compile Include="Assets\Script\Item\ItemInfo.cs" />
      <Compile Include="Assets\Script\Item\ItemPickup.cs" />
      <Compile Include="Assets\Script\Item\RotateMyself.cs" />
      <Compile Include="Assets\Script\Map.cs" />
@@ -638,6 +640,7 @@
      <Compile Include="Assets\Script\cheat.cs" />
      <Compile Include="Assets\Script\doorlocker.cs" />
      <Compile Include="Assets\Script\dooropen.cs" />
+     <Compile Include="Assets\Script\player.cs" />
      <Compile Include="Assets\Script\smooth.cs" />
      <Compile Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\Shader Forge\Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />

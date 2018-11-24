@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    
-    static public string _number;
 
+    static public string _number;
+ 
     public AudioSource _audiosource;
 
     bool isloading;
@@ -31,22 +31,25 @@ public class ChangeScene : MonoBehaviour
 
     void Start()
     {
+        
         nowscene = SceneManager.GetActiveScene();
-        /* 
-        _block = transform.FindChild("Canvas").FindChild("Block").GetComponent<Image>();
-        _loadingPanel = GameObject.FindGameObjectWithTag("loadingPanel");
-        */
+        _block = GameObject.FindWithTag("Block").GetComponent<Image>();
+        _block.gameObject.SetActive(false);
+        _loadingPanel = GameObject.FindWithTag("loadingPanel");
         _loadingPanel.SetActive(false);
+        if (_block.color.a >= 1)
+            i = 3;
     }
 
+  
     void Update()
     {
         Shady();
+
+        //F2到下一關
         if (Input.GetKeyDown(KeyCode.F2))
         { StartFade(); }
-        //Debug.Log(nowscene.name);
-        if (Input.GetKeyDown(KeyCode.F3))
-            SceneManager.UnloadSceneAsync(nowscene);
+
     }
 
     public void StartFade()
@@ -77,6 +80,7 @@ public class ChangeScene : MonoBehaviour
     {
         next_scene = SceneManager.LoadSceneAsync(s);
         next_scene.allowSceneActivation = false;
+
         StartCoroutine(LoadScene());
     }
 
@@ -103,7 +107,7 @@ public class ChangeScene : MonoBehaviour
                 {
                     _block.color -= new Color(0, 0, 0, speed / 10 * Time.deltaTime);
                     if (_block.color.a <= 0)
-                    {  i = 0; }
+                    { i = 0; }
                     break;
                 }
             default:
@@ -120,8 +124,9 @@ public class ChangeScene : MonoBehaviour
             {
                 if (next_scene.progress >= 0.9f)
                 {
+
                     yield return new WaitForSeconds(3);
-                    next_scene.allowSceneActivation = true; 
+                    next_scene.allowSceneActivation = true;
                     _loadingPanel.SetActive(false);
                     i++;
                     yield return null;

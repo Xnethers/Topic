@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class Inventory_UI : MonoBehaviour
 {
 
-    public Image img_inventory;
-    Color _clear = new Color(1, 1, 1, 0);
-    Color _open = new Color(1, 1, 1, 1);
-    bool show_Inventory = false;
+    public GameObject inventory;
+
+    [SerializeField] Transform notshow;
+    [SerializeField] Transform show;
+    [SerializeField] bool show_Inventory = false;
 
     [Space(10), Header("物品資訊顯示")]
     [SerializeField] public GameObject itemInfoPanel;
@@ -20,8 +21,8 @@ public class Inventory_UI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        img_inventory = GetComponent<Image>();
-        img_inventory.color = _clear;
+        inventory = this.gameObject;
+        itemInfoPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,14 +36,22 @@ public class Inventory_UI : MonoBehaviour
     void If_show_Inventory()
     {
         if (show_Inventory)
-        { img_inventory.color = _open; }
+        { inventory.transform.position = show.position; }
         else
-        { img_inventory.color = _clear; }
+        { inventory.transform.position = notshow.position; }
     }
 
-    public void showiteminfo()
+    public void showInventory()
+    { show_Inventory = !show_Inventory; }
+
+    public void showiteminfo(ItemInfo i)
     {
-        itemInfoPanel.SetActive(true);
+        if (i.item != null)
+        {
+            itemInfoPanel.SetActive(true);
+            ItemName.text = i.item.name;
+            ItemDescription.text = i.item.Description;
+        }
     }
     public void notshowiteminfo()
     {

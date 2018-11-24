@@ -83,6 +83,11 @@ public class Search_Item : MonoBehaviour
                 _flowchart.ExecuteBlock("Get_Lingshi");
                 _itemup.PickUp();
             }
+            else if(_itemup.item.ID == 2)
+            {
+                 _flowchart.ExecuteBlock("Hairclip");
+            }
+
             else if (_itemup.item.ID > 5 && _itemup.item.ID < 20)
             {
                 _flowchart.ExecuteBlock("Get_Note");

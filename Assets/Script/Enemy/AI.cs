@@ -64,7 +64,7 @@ public class AI : MonoBehaviour
             ParticleSystem _dieparticle = (ParticleSystem)Instantiate(eHP.Die_particle, transform);
             _dieparticle.Play();
         }
-        
+
         distance = Vector3.Distance(_player.position, transform.position);
 
         switch (_type)
@@ -84,10 +84,12 @@ public class AI : MonoBehaviour
                             }
                         case AIState.Attack:
                             {
-                                _randommove.enabled = false;
-                                _randommove.Rotation_To(_player.position);
-                                _attack.attack(1);
-
+                                if (!isHurt)
+                                {
+                                    _randommove.enabled = false;
+                                    _randommove.Rotation_To(_player.position);
+                                    _attack.attack(1);
+                                }
                                 if (distance < attack_distance)
                                 {
                                     _attack.attack(0);
@@ -95,7 +97,6 @@ public class AI : MonoBehaviour
                                 }
                                 if (distance >= randommove_distance || !sight)
                                 {
-
                                     _attack.attack(0);
                                     Status = AIState.RandomMoving;
                                 }
@@ -205,9 +206,16 @@ public class AI : MonoBehaviour
 
     public void Hurt(float d)
     {
+        StartCoroutine( stopattack());
         eHP._health -= d;
         _animator.Play("M_hurt");
         Particle_hit.Play(true);
+    }
+
+    IEnumerator stopattack()
+    {
+        isHurt = true;
+        yield return new WaitForSeconds(1.8f);
         isHurt = false;
     }
 

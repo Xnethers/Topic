@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 //枚举游戏状态，运行和暂停
 public enum GameState
 {
@@ -29,12 +28,10 @@ public class GameManager : MonoBehaviour
             foreach (Item j in itemToAdd)
                 inventory.AddItem(j);
         }
-        //F2删除物品
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            foreach (Item i in itemToAdd)
-            { inventory.RemoveItem(i); }
-        }
+        //F2到下一關
+
+        //F3無敵
+       
         //按ESC暂停游戏
         if (Input.GetKeyDown(KeyCode.Escape))
         {

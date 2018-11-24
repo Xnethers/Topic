@@ -11,16 +11,16 @@ public class ChangeScenePoint : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _changeScene = GameObject.FindGameObjectWithTag("GameController").GetComponent<ChangeScene>();
+        _changeScene = GameObject.FindWithTag("ChangeScene").GetComponent<ChangeScene>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Player")
         {
             if (_changeScene.enabled)

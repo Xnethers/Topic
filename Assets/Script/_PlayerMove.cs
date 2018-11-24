@@ -5,7 +5,7 @@ using UnityEngine;
 public class _PlayerMove : MonoBehaviour
 {
     public AudioClip walksound;
-    private Transform mainCameraT;
+    [SerializeField]private Transform mainCameraT;
     private Transform CameraD;
     private CharacterController _player;
     public Transform _groundChecker;

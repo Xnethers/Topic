@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
+    
+    public Player_Health hp;
+   
     void Awake()
     {
         if (instance != null)
@@ -25,19 +28,29 @@ public class Inventory : MonoBehaviour
             itemImages[i] = ItemSlot[i].transform.FindChild("ItemImage").GetComponentInChildren<Image>();
             counts[i] = ItemSlot[i].GetComponentInChildren<Text>();
         }
+
+        hp = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Health>();
     }
     [SerializeField] public int numItemSlots = 20;
     [SerializeField] public GameObject[] ItemSlot;
     [SerializeField] Image[] itemImages;
+
     public Item[] items;
     Text[] counts;
 
 
     int itemCount = 1;
 
-    public void getiteminfo()
+    public void UseItem(ItemInfo i)
     {
-        Debug.Log()
+        if (i.item.ID == 1)
+        {
+            if (Input.GetMouseButtonUp(1))
+            {
+                hp.addPHP.Invoke(50);
+                RemoveItem(i.item); 
+            }
+        }
     }
 
     public void AddItem(Item itemToAdd)
@@ -60,6 +73,7 @@ public class Inventory : MonoBehaviour
                 items[i] = itemToAdd;
                 itemImages[i].sprite = itemToAdd.icon;
                 itemImages[i].enabled = true;
+                ItemSlot[i].GetComponent<ItemInfo>().item = itemToAdd;
                 return;
             }
         }
@@ -86,6 +100,7 @@ public class Inventory : MonoBehaviour
                 items[i] = null;
                 itemImages[i].sprite = null;
                 itemImages[i].enabled = false;
+                ItemSlot[i].GetComponent<ItemInfo>().item = null;
                 return;
             }
         }
